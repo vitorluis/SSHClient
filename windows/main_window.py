@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
+from pprint import pprint
 # from handlers.main_window_handler import MainWindowHandler
 
 
@@ -32,7 +33,6 @@ class MainWindow:
         self.builder.add_from_file(self.glade_file)
 
         self.window = self.builder.get_object("main_window")
-
         self.window.connect("delete-event", Gtk.main_quit)
 
         model = Gtk.ListStore(str)
@@ -41,13 +41,47 @@ class MainWindow:
         model.append(["Cliente 1"])
         model.append(["Cliente 1"])
         model.append(["Cliente 1"])
-        lista = self.builder.get_object('items_view')
+        lista = self.builder.get_object('connections_tree')
 
         column = Gtk.TreeViewColumn('Connections', Gtk.CellRendererText(), text=0)
         column.set_clickable(False)
         column.set_resizable(False)
         lista.append_column(column)
         lista.set_model(model)
+
+        model1 = Gtk.ListStore(str, str)
+        model1.append(["Property", "Value"])
+        model1.append(["Property", "Value"])
+        model1.append(["Property", "Value"])
+        model1.append(["Property", "Value"])
+        model1.append(["Property", "Value"])
+
+        lista = self.builder.get_object('connections_info_tree')
+        vbox = self.builder.get_object('vbox_main')
+
+        column = Gtk.TreeViewColumn('Property', Gtk.CellRendererText(), text=0)
+        column.set_clickable(False)
+        column.set_resizable(True)
+        lista.append_column(column)
+
+        column = Gtk.TreeViewColumn('Value', Gtk.CellRendererText(), text=1)
+        column.set_clickable(False)
+        column.set_resizable(True)
+        lista.append_column(column)
+        lista.set_model(model1)
+
+        mb = Gtk.MenuBar()
+
+        filemenu = Gtk.Menu()
+        filem = Gtk.MenuItem("File")
+        filem.set_submenu(filemenu)
+
+        exit = Gtk.MenuItem("Exit")
+        exit.connect("activate", Gtk.main_quit)
+        filemenu.append(exit)
+
+        vbox.add(mb)
+
         self.window.show_all()
 
         Gtk.main()
