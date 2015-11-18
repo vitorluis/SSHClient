@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
-from pprint import pprint
 # from handlers.main_window_handler import MainWindowHandler
 
 
@@ -41,11 +40,16 @@ class MainWindow:
         model.append(["Cliente 1"])
         model.append(["Cliente 1"])
         model.append(["Cliente 1"])
+        model.append(["Cliente 1"])
+        model.append(["Cliente 1"])
+        model.append(["Cliente 1"])
+        model.append(["Cliente 1"])
+        model.append(["Cliente 1"])
         lista = self.builder.get_object('connections_tree')
 
         column = Gtk.TreeViewColumn('Connections', Gtk.CellRendererText(), text=0)
-        column.set_clickable(False)
-        column.set_resizable(False)
+        column.set_clickable(True)
+        column.set_resizable(True)
         lista.append_column(column)
         lista.set_model(model)
 
@@ -70,21 +74,7 @@ class MainWindow:
         lista.append_column(column)
         lista.set_model(model1)
 
-        mb = Gtk.MenuBar()
-
-        filemenu = Gtk.Menu()
-        filem = Gtk.MenuItem("File")
-        filem.set_submenu(filemenu)
-
-        exit = Gtk.MenuItem("Exit")
-        exit.connect("activate", Gtk.main_quit)
-        filemenu.append(exit)
-
-        vbox.add(mb)
-
         self.window.show_all()
-
-        Gtk.main()
 
     def connect_events(self):
         # Connect the signals
