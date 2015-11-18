@@ -7,8 +7,8 @@ class Connection:
     port = None
     user = None
     password = None
-    key = None
     use_key = False
+    key = None
 
     def __init__(self):
         pass
