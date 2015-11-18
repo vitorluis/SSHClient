@@ -10,17 +10,17 @@
   <object class="GtkImage" id="delete_connection_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-delete</property>
+    <property name="pixbuf">images/delete.png</property>
   </object>
   <object class="GtkImage" id="edit_connection_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-edit</property>
+    <property name="pixbuf">images/edit.png</property>
   </object>
   <object class="GtkImage" id="new_connection_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-new</property>
+    <property name="pixbuf">images/new.png</property>
   </object>
   <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
@@ -40,11 +40,13 @@
             <property name="spacing">10</property>
             <child>
               <object class="GtkButton" id="btn_new_connection">
-                <property name="label" translatable="yes">   New Connection</property>
+                <property name="label" translatable="yes">   New Connection  </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="border_width">5</property>
                 <property name="image">new_connection_icon</property>
+                <property name="image_position">top</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -54,11 +56,13 @@
             </child>
             <child>
               <object class="GtkButton" id="btn_edit_connection">
-                <property name="label" translatable="yes">   Edit Connection</property>
+                <property name="label" translatable="yes">    Edit Connection   </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="border_width">5</property>
                 <property name="image">edit_connection_icon</property>
+                <property name="image_position">top</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -68,11 +72,13 @@
             </child>
             <child>
               <object class="GtkButton" id="btn_delete_connection">
-                <property name="label" translatable="yes">   Delete Connection</property>
+                <property name="label" translatable="yes">   Delete Connection  </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="border_width">5</property>
                 <property name="image">delete_connection_icon</property>
+                <property name="image_position">top</property>
               </object>
               <packing>
                 <property name="expand">True</property>

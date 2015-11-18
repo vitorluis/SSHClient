@@ -18,4 +18,6 @@ class Connections:
 
         # Execute the sql
         results = self.dbconnection.select_query(sql)
-        pprint(results)
+
+        for row in results:
+            print(row["name"])

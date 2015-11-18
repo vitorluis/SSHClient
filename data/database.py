@@ -13,9 +13,13 @@ class DBConnection:
         # Set the DB File
         self.file = settings.DB_FILE
 
+        # Open the connection
+        self.open_connection()
+
     def open_connection(self):
         # Open the connection
         self.connection = sqlite3.connect(self.file, detect_types=sqlite3.PARSE_COLNAMES)
+        self.connection.row_factory = sqlite3.Row
 
         # Get the cursor
         self.cursor = self.connection.cursor()
