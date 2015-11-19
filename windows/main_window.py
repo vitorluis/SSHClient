@@ -87,3 +87,6 @@ class MainWindow:
 
         # Add the column
         table.append_column(column)
+
+        # Configure the table to do not permit selection
+        table.get_selection().set_mode(Gtk.SelectionMode.NONE)
