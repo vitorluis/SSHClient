@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from gi.repository import Gtk
 
 
 class Connection:
@@ -11,6 +12,7 @@ class Connection:
     password = None
     use_key = False
     key_path = None
+    model = None
 
     def __init__(self):
         pass
@@ -18,3 +20,15 @@ class Connection:
     def save(self):
         pass
 
+    def get_model(self):
+        # Create the Model
+        self.model = Gtk.ListStore(str, str)
+        self.model.append(["Name", self.name])
+        self.model.append(["Host", self.host])
+        self.model.append(["Port", str(self.port)])
+        self.model.append(["User", self.user])
+        self.model.append(["Use Key", "Yes" if self.use_key else "No"])
+        self.model.append(["Key Path", self.key_path])
+
+        # Return the Model
+        return self.model

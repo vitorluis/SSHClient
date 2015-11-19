@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from pprint import pprint
 
 
 class MainWindowEvents:
@@ -20,4 +19,23 @@ class MainWindowEvents:
         # Get the connection ID
         connection_id = model[treeiter][1]
 
-        # Load the properties of this connection
+        # Loop by all connections
+        for connection in self.connections.get_connections():
+
+            # Check if is the same ID
+            if connection.id == connection_id:
+                # Get the treeview and set the model
+                table = self.builder.get_object('connections_info_tree')
+                table.set_model(connection.get_model())
+
+    def on_btn_new_connection_clicked(self, btn):
+        pass
+
+    def on_btn_edit_connection_clicked(self, btn):
+        pass
+
+    def on_btn_delete_connection_clicked(self, btn):
+        pass
+
+    def on_btn_connect_clicked(self, btn):
+        pass

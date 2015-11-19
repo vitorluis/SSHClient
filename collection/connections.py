@@ -30,7 +30,7 @@ class Connections:
             connection.host = row['host']
             connection.user = row['user']
             connection.port = row['port']
-            connection.use_key = row['use_key']
+            connection.use_key = True if row['use_key'] == 1 else False
             connection.key_path = row['key_path']
 
             # Add to the list
@@ -47,3 +47,7 @@ class Connections:
 
         # return the model
         return self.model
+
+    # Return all Connection
+    def get_connections(self):
+        return self.connections
