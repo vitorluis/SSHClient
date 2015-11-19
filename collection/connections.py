@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from data.database import DBConnection
-from pprint import pprint
+from model.connection import Connection
+from gi.repository import Gtk
 
 
 class Connections:
 
     dbconnection = None
     connections = []
+    model = None
 
     def __init__(self):
         # Create the DB connection
@@ -19,5 +21,29 @@ class Connections:
         # Execute the sql
         results = self.dbconnection.select_query(sql)
 
+        # Create a model for every connection
         for row in results:
-            print(row["name"])
+            # Create new Connection
+            connection = Connection()
+            connection.id = row['id_connection']
+            connection.name = row['name']
+            connection.host = row['host']
+            connection.user = row['user']
+            connection.port = row['port']
+            connection.use_key = row['use_key']
+            connection.key_path = row['key_path']
+
+            # Add to the list
+            self.connections.append(connection)
+
+    # Method to get ListStore of names
+    def get_connection_names_model(self):
+        # Create the ListStore
+        self.model = Gtk.ListStore(str, int)
+
+        # Looping passing by every connection
+        for connection in self.connections:
+            self.model.append([connection.name, connection.id])
+
+        # return the model
+        return self.model

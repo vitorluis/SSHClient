@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
-# from handlers.main_window_handler import MainWindowHandler
+from events.main_window_events import MainWindowEvents
+from collection.connections import Connections
 
 
 class MainWindow:
@@ -9,11 +10,16 @@ class MainWindow:
     handler_class = None
     builder = None
     window = None
+    connections = None
 
     def __init__(self):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
+
+        # Get the connections
+        self.connections = Connections()
+        self.connections.load_connections()
 
         # Build the Window
         self.build_window()
@@ -34,49 +40,43 @@ class MainWindow:
         self.window = self.builder.get_object("main_window")
         self.window.connect("delete-event", Gtk.main_quit)
 
-        model = Gtk.ListStore(str)
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        model.append(["Cliente 1"])
-        lista = self.builder.get_object('connections_tree')
+        # Build the connection TreeView
+        self.build_connection_treeview()
 
-        column = Gtk.TreeViewColumn('Connections', Gtk.CellRendererText(), text=0)
-        column.set_clickable(True)
-        column.set_resizable(True)
-        lista.append_column(column)
-        lista.set_model(model)
-
-        model1 = Gtk.ListStore(str, str)
-        model1.append(["Property", "Value"])
-        model1.append(["Property", "Value"])
-        model1.append(["Property", "Value"])
-        model1.append(["Property", "Value"])
-        model1.append(["Property", "Value"])
-
-        lista = self.builder.get_object('connections_info_tree')
-        vbox = self.builder.get_object('vbox_main')
-
-        column = Gtk.TreeViewColumn('Property', Gtk.CellRendererText(), text=0)
-        column.set_clickable(False)
-        column.set_resizable(True)
-        lista.append_column(column)
-
-        column = Gtk.TreeViewColumn('Value', Gtk.CellRendererText(), text=1)
-        column.set_clickable(False)
-        column.set_resizable(True)
-        lista.append_column(column)
-        lista.set_model(model1)
+        # Build the Connection Info talbe
+        self.build_connection_info_table()
 
         self.window.show_all()
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = None
+        self.handler_class = MainWindowEvents(self.window, self.builder)
         self.builder.connect_signals(self.handler_class)
+
+    def build_connection_treeview(self):
+        # Get the connection TreeView
+        connection = self.builder.get_object('connections_tree')
+
+        # Create the Column
+        column = Gtk.TreeViewColumn('Connections', Gtk.CellRendererText(), text=0)
+        column.set_clickable(False)
+        column.set_resizable(True)
+
+        # Append the column on the TreeView
+        connection.append_column(column)
+
+        # Set the model
+        connection.set_model(self.connections.get_connection_names_model())
+
+    def build_connection_info_table(self):
+        table = self.builder.get_object('connections_info_tree')
+
+        column = Gtk.TreeViewColumn('Property', Gtk.CellRendererText(), text=0)
+        column.set_clickable(False)
+        column.set_resizable(True)
+        table.append_column(column)
+
+        column = Gtk.TreeViewColumn('Value', Gtk.CellRendererText(), text=1)
+        column.set_clickable(False)
+        column.set_resizable(True)
+        table.append_column(column)

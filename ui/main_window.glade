@@ -10,17 +10,17 @@
   <object class="GtkImage" id="delete_connection_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/delete.png</property>
+    <property name="pixbuf">images/delete2.png</property>
   </object>
   <object class="GtkImage" id="edit_connection_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/edit.png</property>
+    <property name="pixbuf">images/edit2.png</property>
   </object>
   <object class="GtkImage" id="new_connection_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/new.png</property>
+    <property name="pixbuf">images/new2.png</property>
   </object>
   <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
@@ -56,7 +56,7 @@
             </child>
             <child>
               <object class="GtkButton" id="btn_edit_connection">
-                <property name="label" translatable="yes">    Edit Connection   </property>
+                <property name="label" translatable="yes">  Edit Connection   </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -108,6 +108,7 @@
                   <object class="GtkTreeView" id="connections_tree">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <signal name="cursor-changed" handler="on_connections_tree_cursor_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -126,6 +127,8 @@
                   <object class="GtkTreeView" id="connections_info_tree">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="enable_grid_lines">both</property>
+                    <property name="enable_tree_lines">True</property>
                   </object>
                 </child>
               </object>
