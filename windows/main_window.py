@@ -50,7 +50,7 @@ class MainWindow:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = MainWindowEvents(self.window, self.builder)
+        self.handler_class = MainWindowEvents(self.window, self.builder, self.connections)
         self.builder.connect_signals(self.handler_class)
 
     def build_connection_treeview(self):
@@ -69,14 +69,21 @@ class MainWindow:
         connection.set_model(self.connections.get_connection_names_model())
 
     def build_connection_info_table(self):
+        # Get the treeview from builder
         table = self.builder.get_object('connections_info_tree')
 
+        # Column Property
         column = Gtk.TreeViewColumn('Property', Gtk.CellRendererText(), text=0)
         column.set_clickable(False)
         column.set_resizable(True)
+
+        # Add the column
         table.append_column(column)
 
+        # Column Value
         column = Gtk.TreeViewColumn('Value', Gtk.CellRendererText(), text=1)
         column.set_clickable(False)
         column.set_resizable(True)
+
+        # Add the column
         table.append_column(column)
