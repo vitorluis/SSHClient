@@ -58,7 +58,7 @@ class MainWindow:
         connection = self.builder.get_object('connections_tree')
 
         # Create the Column
-        column = Gtk.TreeViewColumn('Connections', Gtk.CellRendererText(), text=0)
+        column = Gtk.TreeViewColumn('Servers', Gtk.CellRendererText(), text=0)
         column.set_clickable(False)
         column.set_resizable(True)
 
