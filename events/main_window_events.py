@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from windows.new_connection_window import NewConnectionWindow
 
 class MainWindowEvents:
 
@@ -29,7 +29,8 @@ class MainWindowEvents:
                 table.set_model(connection.get_model())
 
     def on_btn_new_connection_clicked(self, btn):
-        pass
+        # Create the Window
+        NewConnectionWindow()
 
     def on_btn_edit_connection_clicked(self, btn):
         pass
