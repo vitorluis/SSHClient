@@ -39,3 +39,6 @@ class MainWindowEvents:
 
     def on_btn_connect_clicked(self, btn):
         pass
+
+    def on_btn_about_clicked(self, btn):
+        pass
