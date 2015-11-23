@@ -79,6 +79,7 @@ class MainWindow:
         column = Gtk.TreeViewColumn('Property', Gtk.CellRendererText(), text=0)
         column.set_clickable(False)
         column.set_resizable(True)
+        column.set_min_width(150)
 
         # Add the column
         table.append_column(column)

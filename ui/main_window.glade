@@ -18,11 +18,17 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-edit</property>
   </object>
+  <object class="GtkImage" id="refresh_icon">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-refresh</property>
+  </object>
   <object class="GtkApplicationWindow" id="main_window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">SSHClient</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
+    <property name="icon">images/ssh.png</property>
     <property name="gravity">center</property>
     <child>
       <object class="GtkBox" id="box_main">
@@ -35,13 +41,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuItem" id="menuitem1">
+              <object class="GtkMenuItem" id="main_menu_file">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu1">
+                  <object class="GtkMenu" id="menu_file">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -50,13 +56,17 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">New Connection</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_new_connection_item_activate" swapped="no"/>
                         <accelerator key="n" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separator_file_mnu">
+                      <object class="GtkMenuItem" id="settings_item">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Settings</property>
+                        <property name="use_underline">True</property>
+                        <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -73,13 +83,13 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="menuitem4">
+              <object class="GtkMenuItem" id="main_menu_about">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu2">
+                  <object class="GtkMenu" id="menu_about">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -110,7 +120,7 @@
             <property name="spacing">9</property>
             <child>
               <object class="GtkPaned" id="paned_main">
-                <property name="width_request">600</property>
+                <property name="width_request">700</property>
                 <property name="height_request">150</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -121,6 +131,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
+                    <property name="spacing">5</property>
                     <child>
                       <object class="GtkScrolledWindow" id="scrolled_connections">
                         <property name="height_request">230</property>
@@ -134,6 +145,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="valign">start</property>
+                            <signal name="cursor-changed" handler="on_connections_tree_cursor_changed" swapped="no"/>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection" id="treeview-selection"/>
                             </child>
@@ -153,10 +165,14 @@
                         <property name="layout_style">start</property>
                         <child>
                           <object class="GtkButton" id="btn_refresh">
+                            <property name="label" translatable="yes">  Refresh</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="image">refresh_icon</property>
+                            <property name="xalign">0.49000000953674316</property>
+                            <signal name="clicked" handler="on_btn_refresh_clicked" swapped="no"/>
+                            <accelerator key="r" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -166,10 +182,12 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="btn_edit">
+                            <property name="label" translatable="yes">  Edit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="image">edit_icon</property>
+                            <signal name="clicked" handler="on_btn_edit_clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -179,10 +197,12 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="btn_delete">
+                            <property name="label" translatable="yes">  Delete</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="image">delete_icon</property>
+                            <signal name="clicked" handler="on_btn_delete_clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -213,6 +233,7 @@
                         <property name="width_request">-1</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="enable_grid_lines">both</property>
                         <child internal-child="selection">
                           <object class="GtkTreeSelection" id="treeview-selection1"/>
                         </child>
@@ -245,6 +266,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="image">connect_icon</property>
+                    <signal name="clicked" handler="on_btn_connect_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -268,10 +290,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="refresh_icon">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-refresh</property>
   </object>
 </interface>

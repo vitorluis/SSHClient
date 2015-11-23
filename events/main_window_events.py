@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from windows.new_connection_window import NewConnectionWindow
 
+
 class MainWindowEvents:
 
     window = None
@@ -25,24 +26,25 @@ class MainWindowEvents:
             # Check if is the same ID
             if connection.id == connection_id:
                 # Get the treeview and set the model
-                table = self.builder.get_object('connections_info_tree')
+                table = self.builder.get_object('connections_info_table')
                 table.set_model(connection.get_model())
 
     def on_btn_new_connection_clicked(self, btn):
         # Create the Window
         NewConnectionWindow()
 
-    def on_btn_edit_connection_clicked(self, btn):
+    def on_btn_edit_clicked(self, btn):
         pass
 
-    def on_btn_delete_connection_clicked(self, btn):
+    def on_btn_delete_clicked(self, btn):
         pass
 
     def on_btn_connect_clicked(self, btn):
         pass
 
-    def on_btn_about_clicked(self, btn):
+    def on_btn_refresh_clicked(self, btn):
         pass
 
-    def on_btn_settings_clicked(self, btn):
-        pass
+    def on_new_connection_item_activate(self, item):
+        # Create the Window
+        NewConnectionWindow()
