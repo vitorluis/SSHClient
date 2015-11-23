@@ -2,10 +2,20 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
+  <object class="GtkImage" id="add_icon">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-add</property>
+  </object>
   <object class="GtkImage" id="cancel_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-cancel</property>
+  </object>
+  <object class="GtkImage" id="remove_icon">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-delete</property>
   </object>
   <object class="GtkImage" id="save_icon">
     <property name="visible">True</property>
@@ -68,13 +78,35 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="txt_host">
+                          <object class="GtkGrid" id="grid_host">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="caps_lock_warning">False</property>
-                            <property name="primary_icon_tooltip_text" translatable="yes">Connection Host</property>
-                            <property name="secondary_icon_tooltip_text" translatable="yes">Connection Host</property>
-                            <property name="placeholder_text" translatable="yes">Host</property>
+                            <property name="can_focus">False</property>
+                            <child>
+                              <object class="GtkEntry" id="txt_host">
+                                <property name="width_request">235</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="caps_lock_warning">False</property>
+                                <property name="placeholder_text" translatable="yes">Host</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="txt_port">
+                                <property name="width_request">50</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="placeholder_text" translatable="yes">Port</property>
+                                <property name="input_purpose">number</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="top_attach">0</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -83,11 +115,11 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="txt_port">
+                          <object class="GtkEntry" id="txt_user">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="placeholder_text" translatable="yes">Port</property>
-                            <property name="input_purpose">number</property>
+                            <property name="placeholder_text" translatable="yes">User</property>
+                            <property name="input_purpose">alpha</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -96,11 +128,32 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="txt_user">
+                          <object class="GtkGrid" id="grid_switch">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="placeholder_text" translatable="yes">User</property>
-                            <property name="input_purpose">alpha</property>
+                            <property name="can_focus">False</property>
+                            <property name="column_spacing">5</property>
+                            <child>
+                              <object class="GtkSwitch" id="switch_use_key">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <signal name="state-set" handler="on_switch_use_key_state_set" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="lbl_use_key">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Use a key to connect to server</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="top_attach">0</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -115,14 +168,31 @@
                             <property name="orientation">vertical</property>
                             <property name="spacing">5</property>
                             <child>
+                              <object class="GtkFileChooserButton" id="filechooser_key">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">False</property>
+                                <property name="create_folders">False</property>
+                                <property name="show_hidden">True</property>
+                                <property name="title" translatable="yes">Choose the key</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkGrid" id="grid1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="column_spacing">5</property>
                                 <child>
-                                  <object class="GtkSwitch" id="switch_use_key">
+                                  <object class="GtkEntry" id="txt_password">
+                                    <property name="width_request">200</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="placeholder_text" translatable="yes">Password</property>
+                                    <property name="input_purpose">password</property>
                                   </object>
                                   <packing>
                                     <property name="left_attach">0</property>
@@ -130,10 +200,12 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="lbl_use_key">
+                                  <object class="GtkEntry" id="txt_password_confirm">
+                                    <property name="width_request">200</property>
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Use a key to connect to server</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="placeholder_text" translatable="yes">Confirm password</property>
+                                    <property name="input_purpose">password</property>
                                   </object>
                                   <packing>
                                     <property name="left_attach">1</property>
@@ -144,62 +216,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFileChooserButton" id="filechooser_key">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="create_folders">False</property>
-                                <property name="show_hidden">True</property>
-                                <property name="title" translatable="yes">Choose the key</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
                                 <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="box_passwords">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <property name="spacing">5</property>
-                                <child>
-                                  <object class="GtkEntry" id="txt_password">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="secondary_icon_tooltip_text" translatable="yes">Password</property>
-                                    <property name="placeholder_text" translatable="yes">Password</property>
-                                    <property name="input_purpose">password</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="txt_password_confirm">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="secondary_icon_tooltip_text" translatable="yes">Confirm Password</property>
-                                    <property name="placeholder_text" translatable="yes">Confirm password</property>
-                                    <property name="input_purpose">password</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -229,19 +246,101 @@
               </packing>
             </child>
             <child>
-              <object class="GtkFrame" id="frame1">
+              <object class="GtkFrame" id="frame_adv_optinos">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkAlignment" id="alignment1">
+                  <object class="GtkAlignment" id="align_adv_options">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="border_width">10</property>
                     <property name="left_padding">12</property>
                     <child>
-                      <placeholder/>
+                      <object class="GtkBox" id="box_adv_options">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <object class="GtkLabel" id="lbl_tunnels">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Tunnels</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolled_tunnels_table">
+                            <property name="height_request">160</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="shadow_type">in</property>
+                            <child>
+                              <object class="GtkTreeView" id="tunnels_table">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection" id="treeview-selection"/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButtonBox" id="buttonbox1">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="spacing">5</property>
+                            <property name="layout_style">end</property>
+                            <child>
+                              <object class="GtkButton" id="btn_remove">
+                                <property name="label" translatable="yes">  Remove Tunnel</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">remove_icon</property>
+                                <property name="yalign">0.50999999046325684</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="btn_add">
+                                <property name="label" translatable="yes">  Add Tunnel</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">add_icon</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
                     </child>
                   </object>
                 </child>
@@ -281,6 +380,7 @@
                 <property name="receives_default">True</property>
                 <property name="image">cancel_icon</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_btn_cancel_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -296,6 +396,7 @@
                 <property name="receives_default">True</property>
                 <property name="image">save_icon</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_btn_save_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>

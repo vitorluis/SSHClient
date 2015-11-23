@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
+from events.new_connection_window_events import NewConnectionWindowEvents
 
 
 class NewConnectionWindow:
@@ -29,12 +30,40 @@ class NewConnectionWindow:
 
         self.window = self.builder.get_object("new_connection_window")
 
-        # Set the placeholders
-        host = self.builder.get_object("txt_name")
-        host.set_placeholder_text("Name")
+        # Build the Tunnels table
+        self.build_tunnels_table()
+
         self.window.show_all()
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = None
+        self.handler_class = NewConnectionWindowEvents(self.window, self.builder)
         self.builder.connect_signals(self.handler_class)
+
+    def build_tunnels_table(self):
+        # Get the treeview from builder
+        table = self.builder.get_object('tunnels_table')
+
+        # Column Property
+        column = Gtk.TreeViewColumn('Local Port', Gtk.CellRendererText(), text=0)
+        column.set_clickable(False)
+        column.set_resizable(True)
+
+        # Add the column
+        table.append_column(column)
+
+        # Column Value
+        column = Gtk.TreeViewColumn('Address', Gtk.CellRendererText(), text=1)
+        column.set_clickable(False)
+        column.set_resizable(True)
+
+        # Add the column
+        table.append_column(column)
+
+        # Column Value
+        column = Gtk.TreeViewColumn('Remote Port', Gtk.CellRendererText(), text=1)
+        column.set_clickable(False)
+        column.set_resizable(True)
+
+        # Add the column
+        table.append_column(column)

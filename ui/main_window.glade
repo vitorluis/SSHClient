@@ -10,8 +10,8 @@
   <object class="GtkImage" id="delete_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="valign">center</property>
     <property name="stock">gtk-delete</property>
-    <property name="icon_size">3</property>
   </object>
   <object class="GtkImage" id="edit_icon">
     <property name="visible">True</property>
@@ -169,6 +169,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="valign">center</property>
                             <property name="image">refresh_icon</property>
                             <property name="xalign">0.49000000953674316</property>
                             <signal name="clicked" handler="on_btn_refresh_clicked" swapped="no"/>
@@ -186,6 +187,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="valign">center</property>
                             <property name="image">edit_icon</property>
                             <signal name="clicked" handler="on_btn_edit_clicked" swapped="no"/>
                           </object>
@@ -201,6 +203,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="valign">center</property>
                             <property name="image">delete_icon</property>
                             <signal name="clicked" handler="on_btn_delete_clicked" swapped="no"/>
                           </object>
