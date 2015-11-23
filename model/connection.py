@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
+from data.database import DBConnection
 
 
 class Connection:
@@ -18,7 +19,17 @@ class Connection:
         pass
 
     def save(self):
-        pass
+        # Create the DBConnection
+        database = DBConnection()
+
+        # Create the SQL
+        sql = ""
+
+        # Execute the SQL
+        if database.execute_query(sql) > 0:
+            return True
+        else:
+            return False
 
     def get_model(self):
         # Create the Model
