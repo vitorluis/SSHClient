@@ -18,16 +18,17 @@ class MainWindowEvents:
         (model, treeiter) = tree.get_selection().get_selected_rows()
 
         # Get the connection ID
-        connection_id = model[treeiter][1]
+        if model is not None and len(treeiter) > 0:
+            connection_id = model[treeiter][1]
 
-        # Loop by all connections
-        for connection in self.connections.get_connections():
+            # Loop by all connections
+            for connection in self.connections.get_connections():
 
-            # Check if is the same ID
-            if connection.id == connection_id:
-                # Get the treeview and set the model
-                table = self.builder.get_object('connections_info_table')
-                table.set_model(connection.get_model())
+                # Check if is the same ID
+                if connection.id == connection_id:
+                    # Get the treeview and set the model
+                    table = self.builder.get_object('connections_info_table')
+                    table.set_model(connection.get_model())
 
     def on_btn_new_connection_clicked(self, btn):
         # Create the Window
@@ -43,7 +44,18 @@ class MainWindowEvents:
         pass
 
     def on_btn_refresh_clicked(self, btn):
-        pass
+        # Reload the connections
+        self.connections.load_connections()
+
+        # Get the treeview
+        connection = self.builder.get_object('connections_tree')
+
+        # Get the model and clear the list
+        model = connection.get_model()
+        model.clear()
+
+        # Set the new Model
+        connection.set_model(self.connections.get_connection_names_model())
 
     def on_new_connection_item_activate(self, item):
         # Create the Window

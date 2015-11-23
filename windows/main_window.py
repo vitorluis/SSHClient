@@ -71,6 +71,9 @@ class MainWindow:
         # Set the model
         connection.set_model(self.connections.get_connection_names_model())
 
+        # Set the treeview as searchable
+        connection.set_enable_search(True)
+
     def build_connection_info_table(self):
         # Get the treeview from builder
         table = self.builder.get_object('connections_info_table')

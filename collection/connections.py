@@ -15,8 +15,11 @@ class Connections:
         self.dbconnection = DBConnection()
 
     def load_connections(self):
+        # Reset the List
+        self.connections = []
+
         # Create the SQL
-        sql = "select * from connections"
+        sql = "select * from connections order by name"
 
         # Execute the sql
         results = self.dbconnection.select_query(sql)
