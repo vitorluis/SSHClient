@@ -17,6 +17,9 @@ class MainWindow:
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
 
+        # On Unity, unable the system to put the menu bar on the top
+        settings.props.gtk_shell_shows_menubar = False
+
         # Get the connections
         self.connections = Connections()
         self.connections.load_connections()
@@ -70,7 +73,7 @@ class MainWindow:
 
     def build_connection_info_table(self):
         # Get the treeview from builder
-        table = self.builder.get_object('connections_info_tree')
+        table = self.builder.get_object('connections_info_table')
 
         # Column Property
         column = Gtk.TreeViewColumn('Property', Gtk.CellRendererText(), text=0)
