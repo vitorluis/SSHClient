@@ -9,11 +9,13 @@ class NewConnectionWindow:
     handler_class = None
     builder = None
     window = None
+    main_window_callback = None
 
-    def __init__(self):
+    def __init__(self, main_window_callback):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
+        self.main_window_callback = main_window_callback
 
         # Build the Window
         self.build_window()
@@ -37,7 +39,7 @@ class NewConnectionWindow:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = NewConnectionWindowEvents(self.window, self.builder)
+        self.handler_class = NewConnectionWindowEvents(self.window, self.builder, self.main_window_callback)
         self.builder.connect_signals(self.handler_class)
 
     def build_tunnels_table(self):
@@ -53,7 +55,7 @@ class NewConnectionWindow:
         table.append_column(column)
 
         # Column Value
-        column = Gtk.TreeViewColumn('Address', Gtk.CellRendererText(), text=1)
+        column = Gtk.TreeViewColumn('Host', Gtk.CellRendererText(), text=1)
         column.set_clickable(False)
         column.set_resizable(True)
 

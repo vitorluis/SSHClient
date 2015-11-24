@@ -23,7 +23,19 @@ class Connection:
         database = DBConnection()
 
         # Create the SQL
-        sql = ""
+        sql = "INSERT INTO connections (name, host, port, user, passwd, use_key, key_path)" \
+              " VALUES ('{}', '{}', {}, '{}', '{}', {}, '{}');"
+
+        # Bind the values
+        sql = sql.format(
+            self.name,
+            self.host,
+            self.port,
+            self.user,
+            self.password,
+            1 if self.use_key else 0,
+            self.key_path
+        )
 
         # Execute the SQL
         if database.execute_query(sql) > 0:

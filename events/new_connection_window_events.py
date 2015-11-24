@@ -7,11 +7,13 @@ class NewConnectionWindowEvents:
 
     window = None
     builder = None
+    main_window_callback = None
 
-    def __init__(self, window, builder):
+    def __init__(self, window, builder, main_window_callback):
         # Copy the parameters
         self.window = window
         self.builder = builder
+        self.main_window_callback = main_window_callback
 
     def on_switch_use_key_state_set(self, switch, checked):
         # Get the password fields
@@ -34,7 +36,13 @@ class NewConnectionWindowEvents:
         # First of all, validate the form
         if self.validate_form():
             # If OK, save the connection
-            self.save_connection()
+            if self.save_connection():
+                # Run the callback
+                if self.main_window_callback is not None:
+                    self.main_window_callback()
+
+                # Close the Window
+                self.window.destroy()
 
     def on_btn_cancel_clicked(self, btn):
         self.window.destroy()
@@ -115,4 +123,4 @@ class NewConnectionWindowEvents:
         connection.password = password.get_text()
 
         # Save the connection
-        connection.save()
+        return connection.save()

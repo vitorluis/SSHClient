@@ -44,6 +44,14 @@ class MainWindowEvents:
         pass
 
     def on_btn_refresh_clicked(self, btn):
+        # Refresh the list
+        self.refresh_connections_list()
+
+    def on_new_connection_item_activate(self, item):
+        # Create the Window
+        NewConnectionWindow(self.refresh_connections_list)
+
+    def refresh_connections_list(self):
         # Reload the connections
         self.connections.load_connections()
 
@@ -56,7 +64,3 @@ class MainWindowEvents:
 
         # Set the new Model
         connection.set_model(self.connections.get_connection_names_model())
-
-    def on_new_connection_item_activate(self, item):
-        # Create the Window
-        NewConnectionWindow()
