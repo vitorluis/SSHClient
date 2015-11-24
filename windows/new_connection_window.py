@@ -9,13 +9,13 @@ class NewConnectionWindow:
     handler_class = None
     builder = None
     window = None
-    main_window_callback = None
+    refresh_list_callback = None
 
-    def __init__(self, main_window_callback):
+    def __init__(self, refresh_list_callback):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
-        self.main_window_callback = main_window_callback
+        self.refresh_list_callback = refresh_list_callback
 
         # Build the Window
         self.build_window()
@@ -39,7 +39,7 @@ class NewConnectionWindow:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = NewConnectionWindowEvents(self.window, self.builder, self.main_window_callback)
+        self.handler_class = NewConnectionWindowEvents(self.window, self.builder, self.refresh_list_callback)
         self.builder.connect_signals(self.handler_class)
 
     def build_tunnels_table(self):

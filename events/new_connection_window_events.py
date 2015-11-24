@@ -7,13 +7,14 @@ class NewConnectionWindowEvents:
 
     window = None
     builder = None
-    main_window_callback = None
+    refresh_list_callback = None
+    tunnels = []
 
-    def __init__(self, window, builder, main_window_callback):
+    def __init__(self, window, builder, refresh_list_callback):
         # Copy the parameters
         self.window = window
         self.builder = builder
-        self.main_window_callback = main_window_callback
+        self.refresh_list_callback = refresh_list_callback
 
     def on_switch_use_key_state_set(self, switch, checked):
         # Get the password fields
@@ -38,11 +39,15 @@ class NewConnectionWindowEvents:
             # If OK, save the connection
             if self.save_connection():
                 # Run the callback
-                if self.main_window_callback is not None:
-                    self.main_window_callback()
+                if self.refresh_list_callback is not None:
+                    # Call the callback to refresh the connection list
+                    self.refresh_list_callback()
 
                 # Close the Window
                 self.window.destroy()
+            else:
+                # Show a message Box telling the save fails
+                MessageBox("Fail to save the connection. Check if have duplicate names. Try again")
 
     def on_btn_cancel_clicked(self, btn):
         self.window.destroy()
