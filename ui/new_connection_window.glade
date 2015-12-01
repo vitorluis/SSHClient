@@ -341,6 +341,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="image">add_icon</property>
+                                <signal name="clicked" handler="on_btn_add_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>

@@ -2,6 +2,7 @@
 from pprint import pprint
 from windows.message_box import MessageBox
 from model.connection import Connection
+from windows.new_tunnel_window import NewTunnelWindow
 
 
 class NewConnectionWindowEvents:
@@ -37,6 +38,9 @@ class NewConnectionWindowEvents:
             password.set_sensitive(True)
             confirm_password.set_sensitive(True)
             file_chooser.set_sensitive(False)
+
+    def on_btn_add_clicked(self, btn):
+        tunnel = NewTunnelWindow()
 
     def on_btn_save_clicked(self, btn):
         # First of all, validate the form

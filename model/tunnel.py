@@ -5,7 +5,7 @@ class Tunnel:
 
     id = None
     id_connection = None
-    localport = None
+    local_port = None
     address = None
     remote_port = None
 
