@@ -51,6 +51,20 @@ class NewTunnelWindowEvents:
             # Return False to not call the callback
             return False
 
+        elif local_port.get_text().isdigit() is False:
+            # Show the message
+            MessageBox("Local port must be a number")
+
+            # Return False to not call the callback
+            return False
+
+        elif remote_port.get_text().isdigit() is False:
+            # Show the message
+            MessageBox("Remote port must be a number")
+
+            # Return False to not call the callback
+            return False
+
         elif int(local_port.get_text()) <= 0 or int(local_port.get_text()) > 65565:
             # Show the message
             MessageBox("Local port must be greater than 0 and less than 65565")
