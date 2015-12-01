@@ -31,8 +31,8 @@ class Tunnels:
         for row in results:
             # Create new Connection
             tunnel = Tunnel()
-            tunnel.id = row['id_tunnel']
-            tunnel.id_connection = row['id_connection']
+            tunnel.id = 0 if row['id_tunnel'] is None else row['id_tunnel']
+            tunnel.id_connection = 0 if row['id_connection'] is None else row['id_connection']
             tunnel.local_port = row['local_port']
             tunnel.address = row['address']
             tunnel.remote_port = row['remote_port']

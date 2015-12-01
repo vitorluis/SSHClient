@@ -154,4 +154,15 @@ class NewConnectionWindowEvents:
         connection.password = password.get_text()
 
         # Save the connection
-        return connection.save()
+        saved = connection.save()
+
+        # Now saved the tunnels
+        for tunnel in self.tunnels.get_tunnels():
+            # Set the ID connection
+            tunnel.id_connection = connection.id
+
+            # Save the Tunnel
+            tunnel.save()
+
+        # return if is saved or not
+        return saved

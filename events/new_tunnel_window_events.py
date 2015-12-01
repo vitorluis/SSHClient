@@ -34,8 +34,6 @@ class NewTunnelWindowEvents:
 
             # Destroy the Window
             self.window.destroy()
-        else:
-            pass
 
     def on_btn_cancel_clicked(self, btn):
         self.window.destroy()
