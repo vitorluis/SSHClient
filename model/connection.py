@@ -2,6 +2,8 @@
 from pprint import pprint
 from gi.repository import Gtk
 from data.database import DBConnection
+from collection.tunnels import Tunnels
+from model.tunnel import Tunnel
 
 
 class Connection:
@@ -14,10 +16,11 @@ class Connection:
     password = None
     use_key = False
     key_path = None
+    tunnels = None
     model = None
 
     def __init__(self):
-        pass
+        self.tunnels = Tunnels()
 
     def load(self):
         # Create the DBConnection
@@ -43,7 +46,29 @@ class Connection:
             self.key_path = row['key_path']
 
     def load_tunnels(self):
-        pass
+        # Create the DBConnection
+        database = DBConnection()
+
+        # Create the SQL
+        sql = "select * from tunnels where id_connection = {}"
+
+        # Bind the value
+        sql = sql.format(self.id)
+
+        # Execute the query
+        rows = database.select_query(sql)
+
+        # Set the attrs
+        for row in rows:
+            tunnel = Tunnel()
+            tunnel.id = row['id_tunnel']
+            tunnel.id_connection = self.id
+            tunnel.local_port = row['local_port']
+            tunnel.address = row['address']
+            tunnel.remote_port = row['remote_port']
+
+            # Add on Tunnels
+            self.tunnels.add_tunnel(tunnel)
 
     def save(self):
         # Create the DBConnection
@@ -74,6 +99,9 @@ class Connection:
         else:
             # Return False for fail
             return False
+
+    def get_tunnels(self):
+        return self.tunnels
 
     def get_model(self):
         # Create the Model

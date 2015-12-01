@@ -114,6 +114,7 @@ class ConnectionWindowEvents:
         password = self.builder.get_object("txt_password")
         confirm_password = self.builder.get_object("txt_password_confirm")
         file_chooser = self.builder.get_object("filechooser_key")
+        table = self.builder.get_object("tunnels_table")
 
         # Set the values
         name.set_text(connection.name)
@@ -124,6 +125,17 @@ class ConnectionWindowEvents:
         password.set_text(connection.password)
         confirm_password.set_text(connection.password)
         file_chooser.set_filename(connection.key_path)
+
+        # Also, load the tunnels
+        self.tunnels = connection.get_tunnels()
+
+        # Get and clean the model
+        model = table.get_model()
+        if model is not None:
+            model.clear()
+
+        # Set the new model
+        table.set_model(self.tunnels.get_tunnels_model())
 
     def validate_form(self):
         # Get all object that need be validated

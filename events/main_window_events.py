@@ -47,6 +47,7 @@ class MainWindowEvents:
             connection = Connection()
             connection.id = connection_id
             connection.load()
+            connection.load_tunnels()
 
             # Open the Window with the connection
             ConnectionWindow(self.refresh_connections_list, connection)
