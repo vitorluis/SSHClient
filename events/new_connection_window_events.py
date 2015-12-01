@@ -66,6 +66,21 @@ class NewConnectionWindowEvents:
         # Set the new model
         table.set_model(self.tunnels.get_tunnels_model())
 
+    def on_btn_remove_clicked(self, btn):
+        # Remove the line tunnel from the collection and rebuild the table
+        self.tunnels.remove_tunnel_at(self.index_to_remove)
+
+        # Rebuild the table
+        table = self.builder.get_object("tunnels_table")
+
+        # Get and clean the model
+        model = table.get_model()
+        if model is not None:
+            model.clear()
+
+        # Set the new model
+        table.set_model(self.tunnels.get_tunnels_model())
+
     def on_btn_save_clicked(self, btn):
         # First of all, validate the form
         if self.validate_form():
