@@ -13,6 +13,7 @@ class ConnectionWindowEvents:
     refresh_list_callback = None
     tunnels = None
     index_to_remove = None
+    connection = None
 
     def __init__(self, window, builder, refresh_list_callback, connection=None):
         # Copy the parameters
@@ -23,7 +24,8 @@ class ConnectionWindowEvents:
 
         # If id_connection is not None, load the connection to Edit
         if connection is not None:
-            self.load_connection(connection)
+            self.connection = connection
+            self.load_connection()
 
         # Connect the event notify::active of the switch key
         switch = self.builder.get_object("switch_use_key")
@@ -104,7 +106,7 @@ class ConnectionWindowEvents:
     def on_btn_cancel_clicked(self, btn):
         self.window.destroy()
 
-    def load_connection(self, connection):
+    def load_connection(self):
         # Get all objects
         name = self.builder.get_object("txt_name")
         host = self.builder.get_object("txt_host")
@@ -117,17 +119,17 @@ class ConnectionWindowEvents:
         table = self.builder.get_object("tunnels_table")
 
         # Set the values
-        name.set_text(connection.name)
-        host.set_text(connection.host)
-        port.set_text(str(connection.port))
-        user.set_text(connection.user)
-        switch_key.set_active(connection.use_key)
-        password.set_text(connection.password)
-        confirm_password.set_text(connection.password)
-        file_chooser.set_filename(connection.key_path)
+        name.set_text(self.connection.name)
+        host.set_text(self.connection.host)
+        port.set_text(str(self.connection.port))
+        user.set_text(self.connection.user)
+        switch_key.set_active(self.connection.use_key)
+        password.set_text(self.connection.password)
+        confirm_password.set_text(self.connection.password)
+        file_chooser.set_filename(self.connection.key_path)
 
         # Also, load the tunnels
-        self.tunnels = connection.get_tunnels()
+        self.tunnels = self.connection.get_tunnels()
 
         # Get and clean the model
         model = table.get_model()
@@ -203,22 +205,24 @@ class ConnectionWindowEvents:
         file_chooser = self.builder.get_object("filechooser_key")
 
         # Create a new Connection
-        connection = Connection()
-        connection.name = name.get_text()
-        connection.host = host.get_text()
-        connection.port = port.get_text()
-        connection.user = user.get_text()
-        connection.use_key = switch_key.get_active()
-        connection.key_path = file_chooser.get_filename()
-        connection.password = password.get_text()
+        if self.connection is None:
+            self.connection = Connection()
+
+        self.connection.name = name.get_text()
+        self.connection.host = host.get_text()
+        self.connection.port = port.get_text()
+        self.connection.user = user.get_text()
+        self.connection.use_key = switch_key.get_active()
+        self.connection.key_path = file_chooser.get_filename()
+        self.connection.password = password.get_text()
 
         # Save the connection
-        saved = connection.save()
+        saved = self.connection.save()
 
         # Now saved the tunnels
         for tunnel in self.tunnels.get_tunnels():
             # Set the ID connection
-            tunnel.id_connection = connection.id
+            tunnel.id_connection = self.connection.id
 
             # Save the Tunnel
             tunnel.save()

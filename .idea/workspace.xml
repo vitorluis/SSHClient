@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1de80629-93b3-4ff6-9cf0-666014f60b61" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/sshclient.db" afterPath="$PROJECT_DIR$/data/sshclient.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/connection.py" afterPath="$PROJECT_DIR$/model/connection.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/connection_window_events.py" afterPath="$PROJECT_DIR$/events/connection_window_events.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/main_window_events.py" afterPath="$PROJECT_DIR$/events/main_window_events.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SSHClient.iws" />
@@ -19,7 +19,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SSHClient$SSHClient.coverage" NAME="SSHClient Coverage Results" MODIFIED="1449013433253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSHClient$SSHClient.coverage" NAME="SSHClient Coverage Results" MODIFIED="1449014156773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/events/main_window_events.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="e#24#78#0" expanded="true" />
               </folding>
@@ -42,28 +42,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/connection.py">
+      <file leaf-file-name="main_window.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/windows/main_window.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <element signature="e#24#49#0" expanded="true" />
-                <marker date="1449013333851" expanded="true" signature="573:623" placeholder="select * fro..connections..." />
-                <marker date="1449013333851" expanded="true" signature="1245:1291" placeholder="select * fro..tunnels..." />
-                <marker date="1449013333851" expanded="true" signature="1938:2078" placeholder="INSERT INTO ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connection_window_events.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5147059">
-              <caret line="129" column="47" selection-start-line="129" selection-start-column="47" selection-end-line="129" selection-end-column="47" />
-              <folding>
-                <element signature="e#24#49#0" expanded="true" />
+                <element signature="e#24#53#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,8 +58,37 @@
         <entry file="file://$PROJECT_DIR$/windows/connection_window.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connection.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/connection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5294118">
+              <caret line="89" column="22" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
+              <folding>
+                <element signature="e#24#49#0" expanded="true" />
+                <marker date="1449014140831" expanded="true" signature="573:623" placeholder="select * fro..connections..." />
+                <marker date="1449014140831" expanded="true" signature="1245:1291" placeholder="select * fro..tunnels..." />
+                <marker date="1449014140831" expanded="true" signature="1970:2112" placeholder="INSERT INTO ..." />
+                <marker date="1449014140831" expanded="true" signature="2148:2281" placeholder="UPDATE conne..." />
+                <marker date="1449014140831" expanded="true" signature="2148:2313" placeholder="UPDATE conne..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connection_window_events.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#49#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,9 +131,9 @@
         <option value="$PROJECT_DIR$/collection/tunnels.py" />
         <option value="$PROJECT_DIR$/events/new_connection_window_events.py" />
         <option value="$PROJECT_DIR$/windows/connection_window.py" />
-        <option value="$PROJECT_DIR$/model/connection.py" />
         <option value="$PROJECT_DIR$/events/main_window_events.py" />
         <option value="$PROJECT_DIR$/events/connection_window_events.py" />
+        <option value="$PROJECT_DIR$/model/connection.py" />
       </list>
     </option>
   </component>
@@ -690,7 +704,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449012614901</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Loading tunnels">
+      <created>1449013483457</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1449013483457</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -774,10 +794,23 @@
     <MESSAGE value="Renaming files" />
     <MESSAGE value="Editing Connection" />
     <MESSAGE value="Loading basic connection info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Loading basic connection info" />
+    <MESSAGE value="Loading tunnels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Loading tunnels" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/model/connection.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/events/connection_window_events.py</url>
+          <line>207</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -785,7 +818,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1130,16 +1163,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/windows/main_window.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/collection/connections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8333333">
@@ -1150,10 +1173,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/windows/main_window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/windows/connection_window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1161,7 +1204,7 @@
     <entry file="file://$PROJECT_DIR$/events/main_window_events.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#24#78#0" expanded="true" />
           </folding>
@@ -1170,23 +1213,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.5294118">
+          <caret line="89" column="22" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
           <folding>
             <element signature="e#24#49#0" expanded="true" />
-            <marker date="1449013333851" expanded="true" signature="573:623" placeholder="select * fro..connections..." />
-            <marker date="1449013333851" expanded="true" signature="1245:1291" placeholder="select * fro..tunnels..." />
-            <marker date="1449013333851" expanded="true" signature="1938:2078" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5147059">
-          <caret line="129" column="47" selection-start-line="129" selection-start-column="47" selection-end-line="129" selection-end-column="47" />
-          <folding>
-            <element signature="e#24#49#0" expanded="true" />
+            <marker date="1449014140831" expanded="true" signature="573:623" placeholder="select * fro..connections..." />
+            <marker date="1449014140831" expanded="true" signature="1245:1291" placeholder="select * fro..tunnels..." />
+            <marker date="1449014140831" expanded="true" signature="1970:2112" placeholder="INSERT INTO ..." />
+            <marker date="1449014140831" expanded="true" signature="2148:2281" placeholder="UPDATE conne..." />
+            <marker date="1449014140831" expanded="true" signature="2148:2313" placeholder="UPDATE conne..." />
           </folding>
         </state>
       </provider>

@@ -75,8 +75,12 @@ class Connection:
         database = DBConnection()
 
         # Create the SQL
-        sql = "INSERT INTO connections (name, host, port, user, passwd, use_key, key_path)" \
-              " VALUES ('{}', '{}', {}, '{}', '{}', {}, '{}');"
+        if self.id is None:
+            sql = "INSERT INTO connections (name, host, port, user, passwd, use_key, key_path)" \
+                " VALUES ('{}', '{}', {}, '{}', '{}', {}, '{}');"
+        else:
+            sql = "UPDATE connections SET name = '{}', host = '{}', port = {}, user = '{}', passwd = '{}'," \
+                  " use_key = {}, key_path = '{}' where id_connection = {}"
 
         # Bind the values
         sql = sql.format(
@@ -86,7 +90,8 @@ class Connection:
             self.user,
             self.password,
             1 if self.use_key else 0,
-            self.key_path
+            self.key_path,
+            self.id
         )
 
         # Execute the SQL
