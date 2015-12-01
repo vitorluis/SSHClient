@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
 from windows.message_box import MessageBox
 from model.connection import Connection
 
@@ -16,13 +17,17 @@ class NewConnectionWindowEvents:
         self.builder = builder
         self.refresh_list_callback = refresh_list_callback
 
-    def on_switch_use_key_state_set(self, switch, checked):
+        # Connect the event notify::active of the switch key
+        switch = self.builder.get_object("switch_use_key")
+        switch.connect("notify::active", self.on_switch_use_key_activate)
+
+    def on_switch_use_key_activate(self, switch, active):
         # Get the password fields
         password = self.builder.get_object("txt_password")
         confirm_password = self.builder.get_object("txt_password_confirm")
         file_chooser = self.builder.get_object("filechooser_key")
 
-        if checked:
+        if switch.get_active():
             # Disable them
             password.set_sensitive(False)
             confirm_password.set_sensitive(False)
