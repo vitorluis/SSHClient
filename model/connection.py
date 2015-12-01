@@ -18,6 +18,12 @@ class Connection:
     def __init__(self):
         pass
 
+    def load(self):
+        pass
+
+    def load_tunnels(self):
+        pass
+
     def save(self):
         # Create the DBConnection
         database = DBConnection()

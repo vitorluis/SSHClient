@@ -12,17 +12,17 @@ class ConnectionWindowEvents:
     refresh_list_callback = None
     tunnels = None
     index_to_remove = None
-    id_connection = None
 
-    def __init__(self, window, builder, refresh_list_callback, id_connection=None):
+    def __init__(self, window, builder, refresh_list_callback, connection=None):
         # Copy the parameters
         self.window = window
         self.builder = builder
         self.refresh_list_callback = refresh_list_callback
         self.tunnels = Tunnels()
-        self.id_connection = id_connection
 
         # If id_connection is not None, load the connection to Edit
+        if connection is not None:
+            self.load_connection(connection)
 
         # Connect the event notify::active of the switch key
         switch = self.builder.get_object("switch_use_key")
@@ -102,6 +102,9 @@ class ConnectionWindowEvents:
 
     def on_btn_cancel_clicked(self, btn):
         self.window.destroy()
+
+    def load_connection(self, connection):
+        pass
 
     def validate_form(self):
         # Get all object that need be validated

@@ -10,12 +10,14 @@ class ConnectionWindow:
     builder = None
     window = None
     refresh_list_callback = None
+    connection = None
 
-    def __init__(self, refresh_list_callback):
+    def __init__(self, refresh_list_callback, connection=None):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
         self.refresh_list_callback = refresh_list_callback
+        self.connection = connection
 
         # Build the Window
         self.build_window()
@@ -32,6 +34,10 @@ class ConnectionWindow:
 
         self.window = self.builder.get_object("new_connection_window")
 
+        # If connection is not None, is an Edit, so, change the Title
+        if self.connection is not None:
+            self.window.set_title("Edit Connection - SSHClient")
+
         # Build the Tunnels table
         self.build_tunnels_table()
 
@@ -39,7 +45,7 @@ class ConnectionWindow:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = ConnectionWindowEvents(self.window, self.builder, self.refresh_list_callback)
+        self.handler_class = ConnectionWindowEvents(self.window, self.builder, self.refresh_list_callback, self.connection)
         self.builder.connect_signals(self.handler_class)
 
     def build_tunnels_table(self):

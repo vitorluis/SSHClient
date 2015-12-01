@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from windows.connection_window import ConnectionWindow
+from model.connection import Connection
 
 
 class MainWindowEvents:
@@ -31,7 +32,24 @@ class MainWindowEvents:
                     table.set_model(connection.get_model())
 
     def on_btn_edit_clicked(self, btn):
-        pass
+        # Get the ID of selected Connection
+        tree = self.builder.get_object("connections_tree")
+
+        # Get the selection
+        (model, treeiter) = tree.get_selection().get_selected_rows()
+
+        # Get the connection ID
+        if model is not None and len(treeiter) > 0:
+            # Get the ID
+            connection_id = model[treeiter][1]
+
+            # Load the Connection
+            connection = Connection()
+            connection.id = connection_id
+            connection.load()
+
+            # Open the Window with the connection
+            ConnectionWindow(self.refresh_connections_list, connection)
 
     def on_btn_delete_clicked(self, btn):
         pass
