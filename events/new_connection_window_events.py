@@ -3,6 +3,7 @@ from pprint import pprint
 from windows.message_box import MessageBox
 from model.connection import Connection
 from windows.new_tunnel_window import NewTunnelWindow
+from collection.tunnels import Tunnels
 
 
 class NewConnectionWindowEvents:
@@ -10,13 +11,14 @@ class NewConnectionWindowEvents:
     window = None
     builder = None
     refresh_list_callback = None
-    tunnels = []
+    tunnels = None
 
     def __init__(self, window, builder, refresh_list_callback):
         # Copy the parameters
         self.window = window
         self.builder = builder
         self.refresh_list_callback = refresh_list_callback
+        self.tunnels = Tunnels()
 
         # Connect the event notify::active of the switch key
         switch = self.builder.get_object("switch_use_key")
@@ -40,7 +42,22 @@ class NewConnectionWindowEvents:
             file_chooser.set_sensitive(False)
 
     def on_btn_add_clicked(self, btn):
-        tunnel = NewTunnelWindow()
+        NewTunnelWindow(self.on_added_tunnel_callback)
+
+    def on_added_tunnel_callback(self, tunnel):
+        # Add the tunnel on the list
+        self.tunnels.add_tunnel(tunnel)
+
+        # Add to the table the new model
+        table = self.builder.get_object("tunnels_table")
+
+        # Get and clean the model
+        model = table.get_model()
+        if model is not None:
+            model.clear()
+
+        # Set the new model
+        table.set_model(self.tunnels.get_tunnels_model())
 
     def on_btn_save_clicked(self, btn):
         # First of all, validate the form

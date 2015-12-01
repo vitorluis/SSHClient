@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from data.database import DBConnection
 
 
 class Tunnel:
@@ -10,9 +11,6 @@ class Tunnel:
     remote_port = None
 
     def __init__(self):
-        pass
-
-    def get_model(self):
         pass
 
     def save(self):

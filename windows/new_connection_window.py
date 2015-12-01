@@ -58,12 +58,13 @@ class NewConnectionWindow:
         column = Gtk.TreeViewColumn('Host', Gtk.CellRendererText(), text=1)
         column.set_clickable(False)
         column.set_resizable(True)
+        column.set_min_width(160)
 
         # Add the column
         table.append_column(column)
 
         # Column Value
-        column = Gtk.TreeViewColumn('Remote Port', Gtk.CellRendererText(), text=1)
+        column = Gtk.TreeViewColumn('Remote Port', Gtk.CellRendererText(), text=2)
         column.set_clickable(False)
         column.set_resizable(True)
 
