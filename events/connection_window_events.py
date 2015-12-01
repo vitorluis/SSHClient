@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
 from windows.message_box import MessageBox
 from model.connection import Connection
 from windows.new_tunnel_window import NewTunnelWindow
@@ -104,7 +105,25 @@ class ConnectionWindowEvents:
         self.window.destroy()
 
     def load_connection(self, connection):
-        pass
+        # Get all objects
+        name = self.builder.get_object("txt_name")
+        host = self.builder.get_object("txt_host")
+        port = self.builder.get_object("txt_port")
+        user = self.builder.get_object("txt_user")
+        switch_key = self.builder.get_object("switch_use_key")
+        password = self.builder.get_object("txt_password")
+        confirm_password = self.builder.get_object("txt_password_confirm")
+        file_chooser = self.builder.get_object("filechooser_key")
+
+        # Set the values
+        name.set_text(connection.name)
+        host.set_text(connection.host)
+        port.set_text(str(connection.port))
+        user.set_text(connection.user)
+        switch_key.set_active(connection.use_key)
+        password.set_text(connection.password)
+        confirm_password.set_text(connection.password)
+        file_chooser.set_filename(connection.key_path)
 
     def validate_form(self):
         # Get all object that need be validated

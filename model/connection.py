@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
 from gi.repository import Gtk
 from data.database import DBConnection
 
@@ -19,7 +20,27 @@ class Connection:
         pass
 
     def load(self):
-        pass
+        # Create the DBConnection
+        database = DBConnection()
+
+        # Create the SQL
+        sql = "select * from connections where id_connection = {}"
+
+        # Bind the value
+        sql = sql.format(self.id)
+
+        # Execute the query
+        rows = database.select_query(sql)
+
+        # Set the attrs
+        for row in rows:
+            self.name = row['name']
+            self.host = row['host']
+            self.port = row['port']
+            self.user = row['user']
+            self.password = row['passwd']
+            self.use_key = True if int(row['use_key']) == 1 else False
+            self.key_path = row['key_path']
 
     def load_tunnels(self):
         pass
