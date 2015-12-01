@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
-from events.new_connection_window_events import NewConnectionWindowEvents
+from events.connection_window_events import ConnectionWindowEvents
 
 
-class NewConnectionWindow:
-    glade_file = "ui/new_connection_window.glade"
+class ConnectionWindow:
+    glade_file = "ui/connection_window.glade"
     main_object = None
     handler_class = None
     builder = None
@@ -39,7 +39,7 @@ class NewConnectionWindow:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = NewConnectionWindowEvents(self.window, self.builder, self.refresh_list_callback)
+        self.handler_class = ConnectionWindowEvents(self.window, self.builder, self.refresh_list_callback)
         self.builder.connect_signals(self.handler_class)
 
     def build_tunnels_table(self):

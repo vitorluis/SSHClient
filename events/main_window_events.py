@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from windows.new_connection_window import NewConnectionWindow
+from windows.connection_window import ConnectionWindow
 
 
 class MainWindowEvents:
@@ -45,7 +45,7 @@ class MainWindowEvents:
 
     def on_new_connection_item_activate(self, item):
         # Create the Window
-        NewConnectionWindow(self.refresh_connections_list)
+        ConnectionWindow(self.refresh_connections_list)
 
     def refresh_connections_list(self):
         # Reload the connections

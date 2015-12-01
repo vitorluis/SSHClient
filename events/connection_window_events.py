@@ -1,25 +1,28 @@
 # -*- coding: utf-8 -*-
-from pprint import pprint
 from windows.message_box import MessageBox
 from model.connection import Connection
 from windows.new_tunnel_window import NewTunnelWindow
 from collection.tunnels import Tunnels
 
 
-class NewConnectionWindowEvents:
+class ConnectionWindowEvents:
 
     window = None
     builder = None
     refresh_list_callback = None
     tunnels = None
     index_to_remove = None
+    id_connection = None
 
-    def __init__(self, window, builder, refresh_list_callback):
+    def __init__(self, window, builder, refresh_list_callback, id_connection=None):
         # Copy the parameters
         self.window = window
         self.builder = builder
         self.refresh_list_callback = refresh_list_callback
         self.tunnels = Tunnels()
+        self.id_connection = id_connection
+
+        # If id_connection is not None, load the connection to Edit
 
         # Connect the event notify::active of the switch key
         switch = self.builder.get_object("switch_use_key")
