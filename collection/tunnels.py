@@ -15,7 +15,13 @@ class Tunnels:
         self.dbconnection = DBConnection()
 
     def add_tunnel(self, tunnel):
+        # Add to the list
         self.tunnels.append(tunnel)
+
+    def remove_tunnel_at(self, index):
+        # Remove the tunnel
+        if len(self.tunnels) > 0:
+            self.tunnels.pop(index)
 
     def load_tunnels(self):
         # Reset the List
@@ -43,11 +49,16 @@ class Tunnels:
     # Method to get ListStore of names
     def get_tunnels_model(self):
         # Create the ListStore
-        self.model = Gtk.ListStore(int, str, int)
+        self.model = Gtk.ListStore(int, str, int, int)
 
         # Looping passing by every tunnel
+        index = 0
         for tunnel in self.tunnels:
-            self.model.append([int(tunnel.local_port), tunnel.address, int(tunnel.remote_port)])
+            # Add the model
+            self.model.append([int(tunnel.local_port), tunnel.address, int(tunnel.remote_port), index])
+
+            # Increment the counter
+            index += 1
 
         # return the model
         return self.model

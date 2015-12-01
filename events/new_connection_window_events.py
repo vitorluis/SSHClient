@@ -12,6 +12,7 @@ class NewConnectionWindowEvents:
     builder = None
     refresh_list_callback = None
     tunnels = None
+    index_to_remove = None
 
     def __init__(self, window, builder, refresh_list_callback):
         # Copy the parameters
@@ -43,6 +44,12 @@ class NewConnectionWindowEvents:
 
     def on_btn_add_clicked(self, btn):
         NewTunnelWindow(self.on_added_tunnel_callback)
+
+    def on_tunnels_table_cursor_changed(self, treeview):
+        # Get the Index
+        (model, path) = treeview.get_selection().get_selected()
+        if model is not None and path is not None:
+            self.index_to_remove = model[path][3]
 
     def on_added_tunnel_callback(self, tunnel):
         # Add the tunnel on the list

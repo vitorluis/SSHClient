@@ -30,10 +30,6 @@ class MainWindowEvents:
                     table = self.builder.get_object('connections_info_table')
                     table.set_model(connection.get_model())
 
-    def on_btn_new_connection_clicked(self, btn):
-        # Create the Window
-        NewConnectionWindow()
-
     def on_btn_edit_clicked(self, btn):
         pass
 

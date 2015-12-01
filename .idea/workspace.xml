@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de80629-93b3-4ff6-9cf0-666014f60b61" name="Default" comment="Fixing add tunnel form validation">
+    <list default="true" id="1de80629-93b3-4ff6-9cf0-666014f60b61" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/sshclient.db" afterPath="$PROJECT_DIR$/data/sshclient.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/new_connection_window.glade" afterPath="$PROJECT_DIR$/ui/new_connection_window.glade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collection/tunnels.py" afterPath="$PROJECT_DIR$/collection/tunnels.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/main_window_events.py" afterPath="$PROJECT_DIR$/events/main_window_events.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/new_connection_window_events.py" afterPath="$PROJECT_DIR$/events/new_connection_window_events.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/new_tunnel_window_events.py" afterPath="$PROJECT_DIR$/events/new_tunnel_window_events.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/tunnel.py" afterPath="$PROJECT_DIR$/model/tunnel.py" />
     </list>
     <ignored path="SSHClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,35 +32,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tunnel.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main_window_events.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/events/main_window_events.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tunnel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/tunnel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21724138">
+            <state vertical-scroll-proportion="0.0">
               <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_connection_window_events.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="new_connection_window_events.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/events/new_connection_window_events.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="164" column="21" selection-start-line="164" selection-start-column="21" selection-end-line="164" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.37241378">
+              <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
               <folding>
                 <element signature="e#24#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_tunnel_window_events.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/events/new_tunnel_window_events.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-              <folding>
-                <element signature="e#24#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/collection/tunnels.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
               <folding>
                 <element signature="e#24#62#0" expanded="true" />
               </folding>
@@ -109,14 +107,14 @@
         <option value="$PROJECT_DIR$/collection/connections.py" />
         <option value="$PROJECT_DIR$/windows/message_box.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/events/main_window_events.py" />
         <option value="$PROJECT_DIR$/model/connection.py" />
         <option value="$PROJECT_DIR$/windows/new_tunnel_window.py" />
         <option value="$PROJECT_DIR$/windows/new_connection_window.py" />
         <option value="$PROJECT_DIR$/events/new_tunnel_window_events.py" />
-        <option value="$PROJECT_DIR$/events/new_connection_window_events.py" />
         <option value="$PROJECT_DIR$/model/tunnel.py" />
+        <option value="$PROJECT_DIR$/events/main_window_events.py" />
         <option value="$PROJECT_DIR$/collection/tunnels.py" />
+        <option value="$PROJECT_DIR$/events/new_connection_window_events.py" />
       </list>
     </option>
   </component>
@@ -602,7 +600,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448975947700</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Saving the Tunnel on Connection">
+      <created>1448981895430</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1448981895430</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -681,7 +685,8 @@
     <MESSAGE value="Adjusting compatibility with Gtk 3.10" />
     <MESSAGE value="Adding tunnels to new connection Window" />
     <MESSAGE value="Fixing add tunnel form validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing add tunnel form validation" />
+    <MESSAGE value="Saving the Tunnel on Connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving the Tunnel on Connection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1021,24 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/events/new_connection_window_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="164" column="21" selection-start-line="164" selection-start-column="21" selection-end-line="164" selection-end-column="21" />
-          <folding>
-            <element signature="e#24#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/events/main_window_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47241378">
-          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/windows/new_connection_window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7689655">
@@ -1055,16 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/events/new_tunnel_window_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-          <folding>
-            <element signature="e#24#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/collection/connections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43448275">
@@ -1073,21 +1050,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/tunnel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events/main_window_events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events/new_tunnel_window_events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7517241">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+          <folding>
+            <element signature="e#24#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/collection/tunnels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding>
             <element signature="e#24#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/tunnel.py">
+    <entry file="file://$PROJECT_DIR$/events/new_connection_window_events.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21724138">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding />
+        <state vertical-scroll-proportion="0.37241378">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+          <folding>
+            <element signature="e#24#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
