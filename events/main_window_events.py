@@ -2,6 +2,7 @@
 from windows.connection_window import ConnectionWindow
 from model.connection import Connection
 from windows.delete_connection_window import DeleteConnectionWindow
+from windows.shell import Shell
 
 
 class MainWindowEvents:
@@ -69,7 +70,29 @@ class MainWindowEvents:
             DeleteConnectionWindow(connection_id, self.refresh_connections_list)
 
     def on_btn_connect_clicked(self, btn):
-        pass
+        # Get the selected ID
+        tree = self.builder.get_object("connections_tree")
+
+        # Get the selection
+        (model, treeiter) = tree.get_selection().get_selected_rows()
+
+        # Get the connection ID
+        if model is not None and len(treeiter) > 0:
+            # Get the ID
+            connection_id = model[treeiter][1]
+
+            # Load the Model
+            connection = Connection()
+            connection.id = connection_id
+            connection.load()
+
+            # Get the SSH Command
+            command = connection.generate_ssh_command()
+            print(command)
+
+            # Open the Shell
+            shell = Shell(command, connection.name)
+            shell.run()
 
     def on_btn_refresh_clicked(self, btn):
         # Refresh the list

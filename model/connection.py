@@ -164,3 +164,25 @@ class Connection:
 
         # Return the Model
         return self.model
+
+    def generate_ssh_command(self):
+        # Get the settings
+        # Check if uses key
+        if self.use_key is True:
+            command = "/usr/bin/ssh {}@{} -i {}"
+            command = command.format(self.user, self.host, self.key_path)
+        else:
+            command = "/usr/bin/sshpass -p{} /usr/bin/ssh {}@{}"
+            command = command.format(self.password, self.user, self.host)
+
+        # Format other parameters
+        command += " -p {}"
+        command = command.format(self.port)
+
+        # Get the tunnels
+        for tunnel in self.tunnels.get_tunnels():
+            command += " -L {}:{}:{}"
+            command = command.format(tunnel.local_port, tunnel.address, tunnel.remote_port)
+
+        # At the end, return the command
+        return command
