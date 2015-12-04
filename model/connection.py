@@ -132,6 +132,26 @@ class Connection:
                 # Return False
                 return False
 
+    def delete(self):
+        # Check if have the connection ID
+        if self.id is not None:
+            # Create the DBConnection
+            database = DBConnection()
+
+            # Create the SQL
+            sql = "delete from connections where id_connection = {}"
+
+            # Bind the value
+            sql = sql.format(self.id)
+
+            # Execute the query
+            if database.execute_query(sql) > 0:
+                # Return true telling it's OK
+                return True
+            else:
+                # Return False
+                return False
+
     def get_model(self):
         # Create the Model
         self.model = Gtk.ListStore(str, str)

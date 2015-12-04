@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from windows.connection_window import ConnectionWindow
 from model.connection import Connection
+from windows.delete_connection_window import DeleteConnectionWindow
 
 
 class MainWindowEvents:
@@ -53,7 +54,19 @@ class MainWindowEvents:
             ConnectionWindow(self.refresh_connections_list, connection)
 
     def on_btn_delete_clicked(self, btn):
-        pass
+        # Get the selected ID
+        tree = self.builder.get_object("connections_tree")
+
+        # Get the selection
+        (model, treeiter) = tree.get_selection().get_selected_rows()
+
+        # Get the connection ID
+        if model is not None and len(treeiter) > 0:
+            # Get the ID
+            connection_id = model[treeiter][1]
+
+            # Instance the dialog of delete
+            DeleteConnectionWindow(connection_id, self.refresh_connections_list)
 
     def on_btn_connect_clicked(self, btn):
         pass
@@ -72,6 +85,7 @@ class MainWindowEvents:
 
         # Get the treeview
         connection = self.builder.get_object('connections_tree')
+        connections_info_table = self.builder.get_object('connections_info_table')
 
         # Get the model and clear the list
         model = connection.get_model()
@@ -79,3 +93,8 @@ class MainWindowEvents:
 
         # Set the new Model
         connection.set_model(self.connections.get_connection_names_model())
+
+        # Clear the property tables
+        model = connections_info_table.get_model()
+        if model is not None:
+            model.clear()
