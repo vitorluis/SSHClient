@@ -219,6 +219,9 @@ class ConnectionWindowEvents:
         # Save the connection
         saved = self.connection.save()
 
+        # Delete the Tunnels
+        self.connection.delete_tunnels()
+
         # Now saved the tunnels
         for tunnel in self.tunnels.get_tunnels():
             # Set the ID connection

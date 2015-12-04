@@ -97,7 +97,8 @@ class Connection:
         # Execute the SQL
         if database.execute_query(sql) > 0:
             # Get the last row inserted
-            self.id = database.cursor.lastrowid
+            if self.id is None:
+                self.id = database.cursor.lastrowid
 
             # Return true telling it's OK
             return True
@@ -107,6 +108,26 @@ class Connection:
 
     def get_tunnels(self):
         return self.tunnels
+
+    def delete_tunnels(self):
+        # Check if have the connection ID
+        if self.id is not None:
+            # Create the DBConnection
+            database = DBConnection()
+
+            # Create the SQL
+            sql = "delete from tunnels where id_connection = {}"
+
+            # Bind the value
+            sql = sql.format(self.id)
+
+            # Execute the query
+            if database.execute_query(sql) > 0:
+                # Return true telling it's OK
+                return True
+            else:
+                # Return False
+                return False
 
     def get_model(self):
         # Create the Model
