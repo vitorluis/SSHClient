@@ -46,6 +46,9 @@ class Connection:
             self.key_path = row['key_path']
 
     def load_tunnels(self):
+        # Clear the tunnels list form the collection
+        self.tunnels.clear_tunnels()
+
         # Create the DBConnection
         database = DBConnection()
 

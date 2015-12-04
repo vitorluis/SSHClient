@@ -23,12 +23,13 @@ class Tunnels:
         if len(self.tunnels) > 0:
             self.tunnels.pop(index)
 
-    def load_tunnels(self):
+    def load_tunnels(self, id_connection):
         # Reset the List
         self.tunnels = []
 
         # Create the SQL
-        sql = "select * from tunnels order by name"
+        sql = "select * from tunnels where id_connection = {}"
+        sql = sql.format(id_connection)
 
         # Execute the sql
         results = self.dbconnection.select_query(sql)
@@ -45,6 +46,10 @@ class Tunnels:
 
             # Add to the list
             self.tunnels.append(tunnel)
+
+    def clear_tunnels(self):
+        # Clear list of tunnels
+        self.tunnels = []
 
     # Method to get ListStore of names
     def get_tunnels_model(self):
