@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
+
 from gi.repository import Gtk
 from gi.repository import GLib
 from gi.repository import Vte
@@ -10,6 +12,8 @@ class Shell:
     command = None
     window = None
     title = None
+    executed = False
+    pid = None
 
     def __init__(self, command, window_title):
         # Command to Run and Env
@@ -19,27 +23,27 @@ class Shell:
 
         # Create the terminal
         self.terminal = Vte.Terminal()
-        # self.terminal.connect("child-exited", self.quit)
+        self.terminal.connect("child-exited", self.child_quit)
 
-        # spawn_sync() will run a command, in this case it shows a prompt
+        # Try to execute
         try:
-            self.terminal.fork_command_full(
+            self.executed, self.pid = self.terminal.fork_command_full(
                 Vte.PtyFlags.DEFAULT,
                 None, self.command, [],
                 GLib.SpawnFlags.DO_NOT_REAP_CHILD, None, None, None
             )
         except AttributeError:
-            self.terminal.spawn_sync(
+            self.executed, self.pid = self.terminal.spawn_sync(
                 Vte.PtyFlags.DEFAULT,
                 None, self.command, [],
-                GLib.SpawnFlags.DEFAULT, None, None, None
+                GLib.SpawnFlags.DO_NOT_REAP_CHILD, None, None, None
             )
 
     def run(self):
         # create a window and add the VTE
         self.window = Gtk.Window()
         self.window.add(self.terminal)
-        self.window.connect('delete-event', self.quit)
+        self.window.connect('delete-event', self.quit_window)
 
         # Set the Title
         self.window.set_title(self.title)
@@ -47,5 +51,10 @@ class Shell:
         # you need to show the VTE
         self.window.show_all()
 
-    def quit(self, *args, **kwargs):
+    def child_quit(self, *args):
+        terminal = args[0]
+        pprint(terminal.get_child_exit_status())
+        self.window.destroy()
+
+    def quit_window(self, *args, **kwargs):
         self.window.destroy()

@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1de80629-93b3-4ff6-9cf0-666014f60b61" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/windows/shell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/sshclient.db" afterPath="$PROJECT_DIR$/data/sshclient.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/connection_window.glade" afterPath="$PROJECT_DIR$/ui/connection_window.glade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/main_window.glade" afterPath="$PROJECT_DIR$/ui/main_window.glade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/main_window_events.py" afterPath="$PROJECT_DIR$/events/main_window_events.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/connection.py" afterPath="$PROJECT_DIR$/model/connection.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/shell.py" afterPath="$PROJECT_DIR$/windows/shell.py" />
     </list>
     <ignored path="SSHClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,10 +43,10 @@
       <file leaf-file-name="shell.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/windows/shell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6310518">
-              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.7595993">
+              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
               <folding>
-                <element signature="e#24#53#0" expanded="true" />
+                <element signature="e#24#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -652,7 +647,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449239231068</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Opening Shell">
+      <created>1449244170524</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1449244170524</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -664,10 +665,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32741398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25963807" sideWeight="0.51598173" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25910595" sideWeight="0.48401827" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25910595" sideWeight="0.48401827" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3962264" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3018868" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3018868" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -715,7 +716,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Connections Model and Collection" />
     <MESSAGE value="Loading connections in treeview" />
     <MESSAGE value="Filling the properties connection table" />
     <MESSAGE value="About btn" />
@@ -740,7 +740,8 @@
     <MESSAGE value="Deleting tunnels and adding again" />
     <MESSAGE value="Fixing treeview bug" />
     <MESSAGE value="Delete connection feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete connection feature" />
+    <MESSAGE value="Opening Shell" />
+    <option name="LAST_COMMIT_MESSAGE" value="Opening Shell" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1160,10 +1161,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/windows/shell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6310518">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.7595993">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
           <folding>
-            <element signature="e#24#53#0" expanded="true" />
+            <element signature="e#24#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
