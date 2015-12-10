@@ -1,22 +1,27 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
+
 from gi.repository import Gtk
-from events.settings_window_events import SettingsWindowEvents
+from events.file_export_dialog_events import FileExportDialogEvents
 
 
-class SettingsWindow:
-    glade_file = "ui/settings_window.glade"
-    main_object = None
+class FileExportDialog:
+    glade_file = "ui/file_export_dialog.glade"
     handler_class = None
     builder = None
     window = None
+    selected_file_callback = None
 
-    def __init__(self):
+    def __init__(self, selected_file_callback):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
 
         # On Unity, unable the system to put the menu bar on the top
         settings.props.gtk_shell_shows_menubar = False
+
+        # Set the callback
+        self.selected_file_callback = selected_file_callback
 
         # Build the Window
         self.build_window()
@@ -31,12 +36,13 @@ class SettingsWindow:
         # inflate the layout
         self.builder.add_from_file(self.glade_file)
 
-        self.window = self.builder.get_object("settings_window")
+        self.window = self.builder.get_object("file_export_dialog")
 
         # Show the Window
-        self.window.show_all()
+        pprint(self.window)
+        self.window.run()
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = SettingsWindowEvents(self.window, self.builder)
+        self.handler_class = FileExportDialogEvents(self.window, self.builder, self.selected_file_callback)
         self.builder.connect_signals(self.handler_class)

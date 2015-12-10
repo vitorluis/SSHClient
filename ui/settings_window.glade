@@ -12,6 +12,16 @@
     <property name="can_focus">False</property>
     <property name="stock">gtk-revert-to-saved</property>
   </object>
+  <object class="GtkFileFilter" id="file_filter_db">
+    <mime-types>
+      <mime-type>application/x-sqlite3</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkImage" id="import_icon">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-jump-to</property>
+  </object>
   <object class="GtkImage" id="save_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -24,7 +34,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
-    <property name="icon">ssh.png</property>
+    <property name="icon">images/ssh.png</property>
     <property name="deletable">False</property>
     <child>
       <object class="GtkBox" id="main_box">
@@ -143,70 +153,36 @@
           </packing>
         </child>
         <child>
-          <object class="GtkFrame" id="frame_db">
+          <object class="GtkFrame" id="frame_export_db">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label_xalign">0</property>
             <property name="shadow_type">in</property>
             <child>
-              <object class="GtkAlignment" id="align_db">
+              <object class="GtkAlignment" id="align_export_db">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="border_width">10</property>
                 <property name="left_padding">12</property>
                 <child>
-                  <object class="GtkBox" id="box_db">
+                  <object class="GtkButton" id="btn_export">
+                    <property name="label" translatable="yes">   Export Connections</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">5</property>
-                    <child>
-                      <object class="GtkGrid" id="grid1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="column_spacing">10</property>
-                        <child>
-                          <object class="GtkLabel" id="lbl_export">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Export the connections database</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="btn_export">
-                            <property name="label" translatable="yes">  Export Connections</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">export_icon</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="image">export_icon</property>
+                    <property name="xalign">0.47999998927116394</property>
+                    <property name="always_show_image">True</property>
+                    <signal name="clicked" handler="on_btn_export_clicked" swapped="no"/>
                   </object>
                 </child>
               </object>
             </child>
             <child type="label">
-              <object class="GtkLabel" id="lbl_db">
+              <object class="GtkLabel" id="lbl_export_db">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Database</property>
+                <property name="label" translatable="yes">Export Connections</property>
               </object>
             </child>
           </object>
@@ -214,6 +190,68 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="frame_import_db">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment" id="align_import_db">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">start</property>
+                <property name="border_width">10</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkGrid" id="grid_import_db">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="column_spacing">5</property>
+                    <child>
+                      <object class="GtkFileChooserButton" id="file_import_db">
+                        <property name="width_request">200</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="filter">file_filter_db</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_import">
+                        <property name="label" translatable="yes">  Import Connections</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">import_icon</property>
+                        <property name="always_show_image">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="lbl_import_db">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Import Connections</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -229,6 +267,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="image">close_icon</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -244,6 +283,7 @@
                 <property name="receives_default">True</property>
                 <property name="image">save_icon</property>
                 <property name="xalign">0.50999999046325684</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -255,7 +295,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
