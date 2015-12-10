@@ -66,6 +66,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Settings</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_settings_item_activate" swapped="no"/>
                         <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
@@ -75,6 +76,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Quit</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_quit_item_activate" swapped="no"/>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>

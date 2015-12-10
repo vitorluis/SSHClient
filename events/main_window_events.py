@@ -3,6 +3,8 @@ from windows.connection_window import ConnectionWindow
 from model.connection import Connection
 from windows.delete_connection_window import DeleteConnectionWindow
 from windows.shell import Shell
+from windows.settings_window import SettingsWindow
+from gi.repository import Gtk
 
 
 class MainWindowEvents:
@@ -88,7 +90,6 @@ class MainWindowEvents:
 
             # Get the SSH Command
             command = connection.generate_ssh_command()
-            print(command)
 
             # Open the Shell
             shell = Shell(command, connection.name)
@@ -101,6 +102,13 @@ class MainWindowEvents:
     def on_new_connection_item_activate(self, item):
         # Create the Window
         ConnectionWindow(self.refresh_connections_list)
+
+    def on_quit_item_activate(self, item):
+        Gtk.main_quit()
+
+    def on_settings_item_activate(self, item):
+        # Create the Window
+        SettingsWindow()
 
     def refresh_connections_list(self):
         # Reload the connections
