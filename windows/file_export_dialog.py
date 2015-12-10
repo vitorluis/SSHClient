@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from pprint import pprint
-
 from gi.repository import Gtk
 from events.file_export_dialog_events import FileExportDialogEvents
 
@@ -29,6 +27,9 @@ class FileExportDialog:
         # Connect the signals
         self.connect_events()
 
+        # Show the Window
+        self.window.run()
+
     def build_window(self):
         # Get the builder
         self.builder = Gtk.Builder()
@@ -37,10 +38,6 @@ class FileExportDialog:
         self.builder.add_from_file(self.glade_file)
 
         self.window = self.builder.get_object("file_export_dialog")
-
-        # Show the Window
-        pprint(self.window)
-        self.window.run()
 
     def connect_events(self):
         # Connect the signals

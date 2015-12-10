@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
 
 
 class FileExportDialogEvents:
@@ -19,3 +20,6 @@ class FileExportDialogEvents:
 
     def on_btn_cancel_clicked(self, btn):
         self.window.destroy()
+
+    def on_file_export_dialog_file_activated(self, dialog):
+        pprint(dialog)
