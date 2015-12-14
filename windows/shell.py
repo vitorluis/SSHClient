@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from pprint import pprint
-
 from gi.repository import Gtk
 from gi.repository import GLib
 from gi.repository import Vte
@@ -18,7 +16,6 @@ class Shell:
     def __init__(self, command, window_title):
         # Command to Run and Env
         self.command = str(command).split(' ')
-        print(self.command)
         self.title = window_title
 
         # Create the terminal
@@ -53,7 +50,7 @@ class Shell:
 
     def child_quit(self, *args):
         terminal = args[0]
-        pprint(terminal.get_child_exit_status())
+        status = args[1]
         self.window.destroy()
 
     def quit_window(self, *args, **kwargs):

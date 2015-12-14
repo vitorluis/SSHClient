@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from pprint import pprint
 from gi.repository import Gtk
 from data.database import DBConnection
 from collection.tunnels import Tunnels
@@ -178,6 +177,9 @@ class Connection:
         # Format other parameters
         command += " -p {}"
         command = command.format(self.port)
+
+        # Strict key checking
+        command += " -o StrictHostKeyChecking=no"
 
         # Get the tunnels
         for tunnel in self.tunnels.get_tunnels():

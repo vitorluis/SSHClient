@@ -4,9 +4,6 @@ from windows.file_export_dialog import FileExportDialog
 
 class SettingsWindowEvents:
 
-    # Constants
-    (X11_FORWARD, COMPRESS_REQUEST) = ("x11_forward", "compress_request")
-
     # Properties
     window = None
     builder = None
@@ -17,7 +14,6 @@ class SettingsWindowEvents:
         self.builder = builder
 
     def on_btn_save_clicked(self, btn):
-        # First of all, validate the form
         pass
 
     def on_btn_close_clicked(self, btn):
@@ -27,4 +23,7 @@ class SettingsWindowEvents:
         FileExportDialog(self.on_selected_file_callback)
 
     def on_selected_file_callback(self):
+        pass
+
+    def on_btn_import_clicked(self, btn):
         pass

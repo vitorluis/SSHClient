@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from pprint import pprint
 from windows.message_box import MessageBox
 from model.connection import Connection
 from windows.new_tunnel_window import NewTunnelWindow
