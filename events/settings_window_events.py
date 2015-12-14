@@ -39,10 +39,7 @@ class SettingsWindowEvents:
         self.window.destroy()
 
     def on_btn_export_clicked(self, btn):
-        FileExportDialog(self.on_selected_file_callback)
-
-    def on_selected_file_callback(self):
-        pass
+        FileExportDialog()
 
     def on_btn_import_clicked(self, btn):
         pass

@@ -10,16 +10,13 @@ class FileExportDialog:
     window = None
     selected_file_callback = None
 
-    def __init__(self, selected_file_callback):
+    def __init__(self):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
 
         # On Unity, unable the system to put the menu bar on the top
         settings.props.gtk_shell_shows_menubar = False
-
-        # Set the callback
-        self.selected_file_callback = selected_file_callback
 
         # Build the Window
         self.build_window()
@@ -41,5 +38,5 @@ class FileExportDialog:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = FileExportDialogEvents(self.window, self.builder, self.selected_file_callback)
+        self.handler_class = FileExportDialogEvents(self.window, self.builder)
         self.builder.connect_signals(self.handler_class)
