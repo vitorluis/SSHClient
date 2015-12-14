@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from windows.about_window import AboutWindow
 from windows.connection_window import ConnectionWindow
 from model.connection import Connection
 from windows.delete_connection_window import DeleteConnectionWindow
@@ -104,6 +105,7 @@ class MainWindowEvents:
         ConnectionWindow(self.refresh_connections_list)
 
     def on_quit_item_activate(self, item):
+        # Quit the Gtk main loop
         Gtk.main_quit()
 
     def on_settings_item_activate(self, item):
@@ -111,7 +113,8 @@ class MainWindowEvents:
         SettingsWindow(self.refresh_connections_list)
 
     def on_about_item_activate(self, item):
-        pass
+        # Open the about dialog
+        AboutWindow()
 
     def refresh_connections_list(self):
         # Reload the connections
