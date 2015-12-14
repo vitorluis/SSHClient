@@ -10,14 +10,18 @@ class SettingsWindow:
     handler_class = None
     builder = None
     window = None
+    refresh_list_callback = None
 
-    def __init__(self):
+    def __init__(self, refresh_list_callback):
         # Set some properties
         settings = Gtk.Settings.get_default()
         settings.props.gtk_button_images = True
 
         # On Unity, unable the system to put the menu bar on the top
         settings.props.gtk_shell_shows_menubar = False
+
+        # Set the callback
+        self.refresh_list_callback = refresh_list_callback
 
         # Build the Window
         self.build_window()
@@ -42,7 +46,7 @@ class SettingsWindow:
 
     def connect_events(self):
         # Connect the signals
-        self.handler_class = SettingsWindowEvents(self.window, self.builder)
+        self.handler_class = SettingsWindowEvents(self.window, self.builder, self.refresh_list_callback)
         self.builder.connect_signals(self.handler_class)
 
     def set_properties(self):

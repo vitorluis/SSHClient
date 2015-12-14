@@ -108,7 +108,10 @@ class MainWindowEvents:
 
     def on_settings_item_activate(self, item):
         # Create the Window
-        SettingsWindow()
+        SettingsWindow(self.refresh_connections_list)
+
+    def on_about_item_activate(self, item):
+        pass
 
     def refresh_connections_list(self):
         # Reload the connections
