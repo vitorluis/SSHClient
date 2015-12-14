@@ -5,7 +5,7 @@ from data.database import DBConnection
 class Settings:
     # Constants
     (X11_FORWARD, REQUEST_COMPRESSION, FORCE_IPV4, FORCE_IPV6) = (
-        "x11_forward", "compress_request", "force_ipv4", "force_ipv6"
+        "x11_forward", "request_compression", "force_ipv4", "force_ipv6"
     )
 
     # Properties
@@ -21,30 +21,37 @@ class Settings:
         # Remove the settings from database
         database.execute_query("DELETE FROM settings")
 
+        # Create the list of params
+        params = [(Settings.X11_FORWARD, self.x11_forward),
+                  (Settings.REQUEST_COMPRESSION, self.request_compression),
+                  (Settings.FORCE_IPV4, self.force_ipv4),
+                  (Settings.FORCE_IPV6, self.force_ipv6)]
+
         # Save the settings
-        # X11 Forward
-        database.execute_query(
-            "INSERT INTO settings (property, value) VALUES ('{}', {})".format(Settings.X11_FORWARD, self.x11_forward)
+        affected_rows = database.execute_query_many(
+            "INSERT INTO settings (property, value) VALUES (?, ?)", params
         )
 
-        # Compression
-        database.execute_query(
-            "INSERT INTO settings (property, value) VALUES ('{}', {})".format(Settings.REQUEST_COMPRESSION, self.request_compression)
-        )
-
-        # Force IPv4
-        database.execute_query(
-            "INSERT INTO settings (property, value) VALUES ('{}', {})".format(Settings.FORCE_IPV4, self.force_ipv4)
-        )
-
-        # Force IPv6
-        database.execute_query(
-            "INSERT INTO settings (property, value) VALUES ('{}', {})".format(Settings.FORCE_IPV6, self.force_ipv6)
-        )
+        if affected_rows == 4:
+            # Saved all settings
+            return True
+        else:
+            # Something is wrong, try again
+            return False
 
     def load(self):
         # Create the databse
         database = DBConnection()
 
         # Make the select
-        results = database.select_query("SELECT * FROM settings")
+        rows = database.select_query("SELECT * FROM settings")
+        for row in rows:
+            # Check the name of the property and set the value correctly
+            if row['property'] == Settings.X11_FORWARD:
+                self.x11_forward = int(row['value'])
+            elif row['property'] == Settings.REQUEST_COMPRESSION:
+                self.request_compression = int(row['value'])
+            elif row['property'] == Settings.FORCE_IPV4:
+                self.force_ipv4 = int(row['value'])
+            elif row['property'] == Settings.FORCE_IPV6:
+                self.force_ipv6 = int(row['value'])
