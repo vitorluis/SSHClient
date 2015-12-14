@@ -125,7 +125,9 @@ class ConnectionWindowEvents:
         switch_key.set_active(self.connection.use_key)
         password.set_text(self.connection.password)
         confirm_password.set_text(self.connection.password)
-        file_chooser.set_filename(self.connection.key_path)
+
+        if self.connection.key_path != 'None':  # On SQLITE is saved as str 'None'
+            file_chooser.set_filename(self.connection.key_path)
 
         # Also, load the tunnels
         self.tunnels = self.connection.get_tunnels()
