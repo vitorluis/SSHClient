@@ -2,6 +2,7 @@
 from gi.repository import Gtk
 from gi.repository import GLib
 from gi.repository import Vte
+from windows.message_box import MessageBox
 
 
 class Shell:
@@ -49,9 +50,16 @@ class Shell:
         self.window.show_all()
 
     def child_quit(self, *args):
-        terminal = args[0]
         status = args[1]
-        self.window.destroy()
+        if status is not None:
+            if status > 0:
+                # Destroy the Window
+                self.window.destroy()
+
+                # Show the message
+                MessageBox("Error while opening the connection, please check your credentials and try again")
+            else:
+                self.window.destroy()
 
     def quit_window(self, *args, **kwargs):
         self.window.destroy()

@@ -2,6 +2,7 @@
 from gi.repository import Gtk
 from data.database import DBConnection
 from collection.tunnels import Tunnels
+from model.settings import Settings
 from model.tunnel import Tunnel
 
 
@@ -26,7 +27,7 @@ class Connection:
         database = DBConnection()
 
         # Create the SQL
-        sql = "select * from connections where id_connection = {}"
+        sql = "SELECT * FROM connections WHERE id_connection = {}"
 
         # Bind the value
         sql = sql.format(self.id)
@@ -52,7 +53,7 @@ class Connection:
         database = DBConnection()
 
         # Create the SQL
-        sql = "select * from tunnels where id_connection = {}"
+        sql = "SELECT * FROM tunnels WHERE id_connection = {}"
 
         # Bind the value
         sql = sql.format(self.id)
@@ -118,7 +119,7 @@ class Connection:
             database = DBConnection()
 
             # Create the SQL
-            sql = "delete from tunnels where id_connection = {}"
+            sql = "DELETE FROM tunnels WHERE id_connection = {}"
 
             # Bind the value
             sql = sql.format(self.id)
@@ -138,7 +139,7 @@ class Connection:
             database = DBConnection()
 
             # Create the SQL
-            sql = "delete from connections where id_connection = {}"
+            sql = "DELETE FROM connections WHERE id_connection = {}"
 
             # Bind the value
             sql = sql.format(self.id)
@@ -180,6 +181,23 @@ class Connection:
 
         # Strict key checking
         command += " -o StrictHostKeyChecking=no"
+
+        # Get the settings and apply here
+        settings = Settings()
+        settings.load()
+
+        # X11 forwarding
+        if settings.x11_forward == 1:
+            command += " -X"
+
+        if settings.request_compression == 1:
+            command += " -C"
+
+        if settings.force_ipv4 == 1:
+            command += " -4"
+
+        if settings.force_ipv6 == 1:
+            command += " -6"
 
         # Get the tunnels
         for tunnel in self.tunnels.get_tunnels():
