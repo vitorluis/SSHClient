@@ -61,3 +61,6 @@ class SettingsWindowEvents:
             if self.refresh_list_callback is not None:
                 self.refresh_list_callback()
 
+            # Show the message box
+            MessageBox("Database imported successfully")
+
