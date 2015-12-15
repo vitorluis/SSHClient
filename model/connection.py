@@ -200,6 +200,7 @@ class Connection:
             command += " -6"
 
         # Get the tunnels
+        self.load_tunnels()
         for tunnel in self.tunnels.get_tunnels():
             command += " -L {}:{}:{}"
             command = command.format(tunnel.local_port, tunnel.address, tunnel.remote_port)
