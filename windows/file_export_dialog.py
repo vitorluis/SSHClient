@@ -13,11 +13,11 @@ class FileExportDialog:
 
     def __init__(self):
         # Set some properties
-        settings = Gtk.Settings.get_default()
-        settings.props.gtk_button_images = True
+        gtk_settings = Gtk.Settings.get_default()
+        gtk_settings.props.gtk_button_images = True
 
         # On Unity, unable the system to put the menu bar on the top
-        settings.props.gtk_shell_shows_menubar = False
+        gtk_settings.props.gtk_shell_shows_menubar = False
 
         # Build the Window
         self.build_window()

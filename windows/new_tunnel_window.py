@@ -5,7 +5,7 @@ from events.new_tunnel_window_events import NewTunnelWindowEvents
 
 
 class NewTunnelWindow:
-    glade_file = settings.APP_PATH + "ui/new_tunnel_window.glade"
+    glade_file = settings.APP_PATH + "/ui/new_tunnel_window.glade"
     main_object = None
     handler_class = None
     builder = None
@@ -14,8 +14,8 @@ class NewTunnelWindow:
 
     def __init__(self, add_tunnel_callback):
         # Set some properties
-        settings = Gtk.Settings.get_default()
-        settings.props.gtk_button_images = True
+        gtk_settings = Gtk.Settings.get_default()
+        gtk_settings.props.gtk_button_images = True
         self.add_tunnel_callback = add_tunnel_callback
 
         # Build the Window

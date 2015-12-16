@@ -13,8 +13,8 @@ class MessageBox:
 
     def __init__(self, text):
         # Set some properties
-        settings = Gtk.Settings.get_default()
-        settings.props.gtk_button_images = True
+        gtk_settings = Gtk.Settings.get_default()
+        gtk_settings.props.gtk_button_images = True
         self.text = text
 
         # Build the Window
@@ -32,15 +32,12 @@ class MessageBox:
 
         self.window = self.builder.get_object("message_box")
         self.window.set_markup(self.text)
-        self.window.connect("response", self.close_dialog)
 
         self.window.show_all()
+        self.window.run()
+        self.window.destroy()
 
     def connect_events(self):
         # Connect the signals
         self.handler_class = None
         self.builder.connect_signals(self.handler_class)
-
-    def close_dialog(self, *args, **kwargs):
-        self.window.destroy()
-

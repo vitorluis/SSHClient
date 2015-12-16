@@ -15,8 +15,8 @@ class DeleteConnectionWindow:
 
     def __init__(self, id_connection, refresh_callback):
         # Set some properties
-        settings = Gtk.Settings.get_default()
-        settings.props.gtk_button_images = True
+        gtk_settings = Gtk.Settings.get_default()
+        gtk_settings.props.gtk_button_images = True
         self.id_connection = id_connection
         self.refresh_callback = refresh_callback
 
