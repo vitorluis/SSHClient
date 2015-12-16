@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de80629-93b3-4ff6-9cf0-666014f60b61" name="Default" comment="">
+    <list default="true" id="1de80629-93b3-4ff6-9cf0-666014f60b61" name="Default" comment="Fixing">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/sshclient.db" afterPath="$PROJECT_DIR$/data/sshclient.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/settings_window.glade" afterPath="$PROJECT_DIR$/ui/settings_window.glade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/about_window.py" afterPath="$PROJECT_DIR$/windows/about_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/connection_window.py" afterPath="$PROJECT_DIR$/windows/connection_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/delete_connection_window.py" afterPath="$PROJECT_DIR$/windows/delete_connection_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/file_export_dialog.py" afterPath="$PROJECT_DIR$/windows/file_export_dialog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/main_window.py" afterPath="$PROJECT_DIR$/windows/main_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/message_box.py" afterPath="$PROJECT_DIR$/windows/message_box.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/new_tunnel_window.py" afterPath="$PROJECT_DIR$/windows/new_tunnel_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/windows/settings_window.py" afterPath="$PROJECT_DIR$/windows/settings_window.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/connection_window_events.py" afterPath="$PROJECT_DIR$/events/connection_window_events.py" />
     </list>
     <ignored path="SSHClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings_window.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings_window.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/windows/settings_window.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
@@ -92,6 +86,16 @@
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connection_window_events.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.36">
+              <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,7 +172,6 @@
         <option value="$PROJECT_DIR$/data/database.py" />
         <option value="$PROJECT_DIR$/model/settings.py" />
         <option value="$PROJECT_DIR$/windows/shell.py" />
-        <option value="$PROJECT_DIR$/events/connection_window_events.py" />
         <option value="$PROJECT_DIR$/events/file_export_dialog_events.py" />
         <option value="$PROJECT_DIR$/events/settings_window_events.py" />
         <option value="$PROJECT_DIR$/events/main_window_events.py" />
@@ -182,6 +185,7 @@
         <option value="$PROJECT_DIR$/windows/about_window.py" />
         <option value="$PROJECT_DIR$/windows/message_box.py" />
         <option value="$PROJECT_DIR$/windows/new_tunnel_window.py" />
+        <option value="$PROJECT_DIR$/events/connection_window_events.py" />
       </list>
     </option>
   </component>
@@ -793,7 +797,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450265131027</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fixing and improving things">
+      <created>1450265673363</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1450265673363</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -803,8 +813,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25963807" sideWeight="0.51598173" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25745034" sideWeight="0.48401827" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25745034" sideWeight="0.5222222" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25745034" sideWeight="0.47777778" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39511654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30077693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -856,7 +866,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refresh list" />
     <MESSAGE value="Validation of new connection form" />
     <MESSAGE value="Saving method" />
     <MESSAGE value="Basic new connection Done" />
@@ -881,7 +890,8 @@
     <MESSAGE value="Export Db File successfully" />
     <MESSAGE value="Import Db File successfully" />
     <MESSAGE value="Fixing load galde files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing load galde files" />
+    <MESSAGE value="Fixing and improving things" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing and improving things" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1198,14 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.23651">
-          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/connection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78530425">
@@ -1294,11 +1296,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/windows/settings_window.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding>
             <element signature="e#24#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events/connection_window_events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36">
+          <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -129,6 +129,10 @@ class ConnectionWindowEvents:
         if self.connection.key_path != 'None':  # On SQLITE is saved as str 'None'
             file_chooser.set_filename(self.connection.key_path)
 
+        # Check if use key is checked, and call the function to switch the fields
+        if self.connection.use_key:
+            self.on_switch_use_key_activate(switch_key, self.connection.use_key)
+
         # Also, load the tunnels
         self.tunnels = self.connection.get_tunnels()
 
