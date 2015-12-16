@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+import settings
 from events.delete_connection_window_events import DeleteConnectionWindowEvents
 from gi.repository import Gtk
 
 
 class DeleteConnectionWindow:
-    glade_file = "ui/delete_connection_window.glade"
+    glade_file = settings.APP_PATH + "/ui/delete_connection_window.glade"
     main_object = None
     handler_class = None
     builder = None

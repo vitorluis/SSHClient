@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 
 
 class MessageBox:
-    glade_file = "ui/message_box.glade"
+    glade_file = settings.APP_PATH + "/ui/message_box.glade"
     main_object = None
     handler_class = None
     builder = None

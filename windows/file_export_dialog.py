@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 from events.file_export_dialog_events import FileExportDialogEvents
 
 
 class FileExportDialog:
-    glade_file = "ui/file_export_dialog.glade"
+    glade_file = settings.APP_PATH + "/ui/file_export_dialog.glade"
     handler_class = None
     builder = None
     window = None

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 from events.settings_window_events import SettingsWindowEvents
 from model.settings import Settings
 
 
 class SettingsWindow:
-    glade_file = "ui/settings_window.glade"
+    glade_file = settings.APP_PATH + "/ui/settings_window.glade"
     main_object = None
     handler_class = None
     builder = None

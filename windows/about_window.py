@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 
 
 class AboutWindow:
-    glade_file = "ui/about_window.glade"
+    glade_file = settings.APP_PATH + "/ui/about_window.glade"
     main_object = None
     handler_class = None
     builder = None

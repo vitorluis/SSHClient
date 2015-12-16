@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 from events.main_window_events import MainWindowEvents
 from collection.connections import Connections
 
 
 class MainWindow:
-    glade_file = "ui/main_window.glade"
+    glade_file = settings.APP_PATH + "/ui/main_window.glade"
     main_object = None
     handler_class = None
     builder = None

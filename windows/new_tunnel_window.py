@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 from events.new_tunnel_window_events import NewTunnelWindowEvents
 
 
 class NewTunnelWindow:
-    glade_file = "ui/new_tunnel_window.glade"
+    glade_file = settings.APP_PATH + "ui/new_tunnel_window.glade"
     main_object = None
     handler_class = None
     builder = None

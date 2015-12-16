@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+import settings
 from gi.repository import Gtk
 from events.connection_window_events import ConnectionWindowEvents
 
 
 class ConnectionWindow:
-    glade_file = "ui/connection_window.glade"
+    glade_file = settings.APP_PATH + "/ui/connection_window.glade"
     main_object = None
     handler_class = None
     builder = None
