@@ -4,6 +4,6 @@ Architecture: all
 Installed-Size: 170
 Section: misc
 Priority: optional
-Depends: openssh-server, sshpass, python-gi, python-vte, python-sqlite, python-pysqlite2, python3-pip, python-pip, gir1.2-vte-2.91
+Depends: openssh-server, sshpass, python-gi, python-vte, python-sqlite, python-pysqlite2, python3-pip, python-pip, gir1.2-vte-2.91, python-dev, python3-dev
 Maintainer: Vitor Villar <vitorn@ciandt.com>
 Description: SSHClient is a GUI to manage SSH Connections

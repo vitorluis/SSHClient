@@ -7,7 +7,7 @@ License: GPL
 Group: Applications/Internet
 URL: http://vitorluis.github.io/SSHClient
 Packager: Vitor Villar <vitor.luis98@gmail.com>
-Requires: openssh-server, sshpass, vte, vte3, gcc, cpp, python3-pip
+Requires: openssh-server, sshpass, vte, vte3, gcc, cpp, python3-pip, python-devel, python3-devel
 BuildArch: noarch
 
 %description
