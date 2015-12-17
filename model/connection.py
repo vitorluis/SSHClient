@@ -4,10 +4,10 @@ from data.database import DBConnection
 from collection.tunnels import Tunnels
 from model.settings import Settings
 from model.tunnel import Tunnel
+from tools.password import PasswordManager
 
 
 class Connection:
-
     id = None
     name = None
     host = None
@@ -23,6 +23,9 @@ class Connection:
         self.tunnels = Tunnels()
 
     def load(self):
+        # Create the Password Manager
+        password_manager = PasswordManager()
+
         # Create the DBConnection
         database = DBConnection()
 
@@ -41,7 +44,7 @@ class Connection:
             self.host = row['host']
             self.port = row['port']
             self.user = row['user']
-            self.password = row['passwd']
+            self.password = password_manager.decrypt_password(row['passwd'])
             self.use_key = True if int(row['use_key']) == 1 else False
             self.key_path = row['key_path']
 
@@ -74,13 +77,16 @@ class Connection:
             self.tunnels.add_tunnel(tunnel)
 
     def save(self):
+        # Create the Password Manager
+        password_manager = PasswordManager()
+
         # Create the DBConnection
         database = DBConnection()
 
         # Create the SQL
         if self.id is None:
             sql = "INSERT INTO connections (name, host, port, user, passwd, use_key, key_path)" \
-                " VALUES ('{}', '{}', {}, '{}', '{}', {}, '{}');"
+                  " VALUES ('{}', '{}', {}, '{}', '{}', {}, '{}');"
         else:
             sql = "UPDATE connections SET name = '{}', host = '{}', port = {}, user = '{}', passwd = '{}'," \
                   " use_key = {}, key_path = '{}' where id_connection = {}"
@@ -91,7 +97,7 @@ class Connection:
             self.host,
             self.port,
             self.user,
-            self.password,
+            password_manager.encrypt_password(self.password),
             1 if self.use_key else 0,
             self.key_path,
             self.id
