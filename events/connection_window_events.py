@@ -170,7 +170,7 @@ class ConnectionWindowEvents:
         if len(port_number) == 0:
             MessageBox("Port can't be empty!")
             return False
-        elif int(port_number) <= 0 or int(port_number) > 65565:
+        elif not port_number.isdigit() or int(port_number) <= 0 or int(port_number) > 65565:
             MessageBox("Port must be between 1 and 65565")
             return False
 
