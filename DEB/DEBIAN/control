@@ -1,0 +1,9 @@
+Package: sshclient
+Version: 1.0-1
+Architecture: all
+Installed-Size: 170
+Section: misc
+Priority: optional
+Depends: openssh-server, sshpass, python-gi, python-vte, python-sqlite, python-pysqlite2
+Maintainer: Vitor Villar <vitorn@ciandt.com>
+Description: SSHClient is a GUI to manage SSH Connections
