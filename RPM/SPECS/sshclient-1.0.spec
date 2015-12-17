@@ -7,7 +7,7 @@ License: GPL
 Group: Applications/Internet
 URL: http://vitorluis.github.io/SSHClient
 Packager: Vitor Villar <vitor.luis98@gmail.com>
-Requires: openssh-server, sshpass, vte, vte3, gcc, cpp, python3-pip, python-devel, python3-devel
+Requires: openssh-server, sshpass, vte, vte3, gcc, cpp, python3-pip, python-devel, python3-devel, gpm, gpm-libs, gpm-devel, redhat-rpm-config
 BuildArch: noarch
 
 %description
@@ -23,6 +23,7 @@ cd %{buildroot}
 tar -xf %{_sourcedir}/sshclient-1.0.tar.gz
 
 %install
+pip3 install pycrypto
 mkdir -p /usr/local/sshclient
 cp -arf %{buildroot}/* /usr/local/sshclient
 ln -s /usr/local/sshclient/sshclient.py /usr/bin/sshclient
