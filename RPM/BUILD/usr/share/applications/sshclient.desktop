@@ -7,5 +7,5 @@ Path=/usr/local/sshclient/
 Icon=/usr/local/sshclient/ui/images/ssh.png
 Terminal=false
 Type=Application
-Categories=Application;Internet
+Categories=GTK;Utility;Application;Internet;Network
 

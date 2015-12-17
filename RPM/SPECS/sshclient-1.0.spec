@@ -23,11 +23,10 @@ cd %{buildroot}
 tar -xf %{_sourcedir}/sshclient-1.0.tar.gz
 
 %install
-
 mkdir -p /usr/local/sshclient
 cp -arf %{buildroot}/* /usr/local/sshclient
 ln -s /usr/local/sshclient/sshclient.py /usr/bin/sshclient
-chmod 1600 /usr/local/sshclient/data/sshclient.db
+
 
 %clean
 rm -rf %{buildroot}
